@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Gianfranco Marchetti</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="index.html">Gianfranco Marchetti</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Portfolio</h1>
+    <p>Di seguito alcuni lavori selezionati. Per la gallery completa visita il mio ArtStation:</p>
+    <p><a class="artstation" href="https://www.artstation.com/gianfrancomarchetti1" target="_blank" rel="noopener">ArtStation — gianfrancomarchetti1</a></p>
+
+    <section class="grid">
+      <!-- Inserisci miniature o immagini pubblicate se vuoi: per ora link esterno -->
+      <article class="card">
+        <h3>Progetto: Biblioteca interattiva</h3>
+        <p>Interattività 3D e UX per esplorazione documentale.</p>
+      </article>
+      <article class="card">
+        <h3>Modellazione & VFX</h3>
+        <p>Advertising e visual per campagne digitali.</p>
+      </article>
+      <article class="card">
+        <h3>Virtual Tour / Mapping</h3>
+        <p>Progetti di mappatura e street integration.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year3"></span> — Portfolio</div>
+  </footer>
+
+  <script>document.getElementById('year3').textContent = new Date().getFullYear();</script>
+</body>
+</html>

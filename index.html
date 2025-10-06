@@ -1,34 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gianfranco Marchetti — Portfolio</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-  :root{
-    --bg:#000;
-    --accent:#fff;
-    --muted:#aaa;
-    --cta:#0ea5a4;
-    --card:rgba(30,30,30,0.9);
-    --max-width:1100px;
-  }
-  body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--accent);}
-  a{color:var(--cta);text-decoration:none;}
-  .container{max-width:var(--max-width);margin:40px auto;padding:0 20px;}
-  .hero{display:flex;align-items:center;gap:40px;padding:40px 20px;position:relative;flex-wrap:wrap;}
-  .hero-text{max-width:540px;position:relative;z-index:1;}
-  .hero-text h1{margin:0;font-size:2rem;}
-  .subtitle{color:var(--muted);margin-top:6px;font-weight:600;}
-  .lead{color:#ccc;}
-  .cta{display:inline-block;margin-top:16px;background:var(--cta);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;}
-  #canvas-wrap{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;min-height:400px;}
-  section.intro{margin-top:30px;}
-  section.intro h2{margin-bottom:16px;}
-  .experience, .skills, .languages{margin-bottom:20px;}
-  .experience li{margin-bottom:10px;}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gianfranco Marchetti — Portfolio</title>
+  <style>
+    :root{
+      --bg:#000;
+      --accent:#fff;
+      --muted:#999;
+      --cta:#0ea5a4;
+      --card:rgba(30,30,30,0.9);
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background:var(--bg);
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:var(--cta); text-decoration:none}
+    .container{max-width:var(--max-width); margin:40px auto; padding:0 20px}
+    .hero{display:flex;align-items:center;gap:40px;padding:40px 20px;position:relative;flex-wrap:wrap;min-height:420px}
+    .hero-text{max-width:540px;position:relative;z-index:2}
+    .hero-text h1{margin:0;font-size:2rem}
+    .subtitle{color:var(--muted); margin-top:6px; font-weight:600}
+    .lead{color:#cccccc}
+    .cta{display:inline-block;margin-top:16px;background:var(--cta);color:white;padding:10px 16px;border-radius:8px;font-weight:700}
+    /* canvas wrapper sits behind text */
+    #canvas-wrap{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+    /* ensure canvas element inside won't capture pointer events unless needed */
+    #canvas-wrap canvas{display:block; width:100%; height:100%;}
+    section.intro{margin-top:30px;position:relative;z-index:2}
+    .experience, .skills, .languages{margin-bottom:20px}
+    .experience li{margin-bottom:10px}
+    footer.site-footer{padding:24px 20px;border-top:1px solid rgba(255,255,255,0.04);margin-top:40px;display:flex;justify-content:space-between;align-items:center}
+    /* mobile */
+    @media (max-width:900px){
+      .hero{flex-direction:column-reverse;padding:20px;min-height:320px}
+      #canvas-wrap{height:50vh}
+    }
+    /* fallback visible error */
+    #js-error {
+      display:none;
+      background:#2b0000;
+      color:#ffb3b3;
+      padding:12px;
+      border-radius:8px;
+      margin:12px 20px;
+      font-family:monospace;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,7 +64,9 @@
     <p class="lead">Creo esperienze visive e prototipi 3D per clienti internazionali. Scorri per vedere il mio lavoro.</p>
     <a class="cta" href="#about">Chi sono</a>
   </div>
-  <div id="canvas-wrap"></div>
+
+  <!-- canvas-wrap: il codice JS popolerà questo div con renderer.domElement -->
+  <div id="canvas-wrap" aria-hidden="true"></div>
 </header>
 
 <main class="container">
@@ -66,101 +93,152 @@
       Italiano (madrelingua), Inglese B2, Rumeno B2
     </p>
   </section>
+
+  <!-- messaggio d'errore visibile se il modulo non carica -->
+  <div id="js-error" role="alert"></div>
 </main>
 
 <footer class="site-footer container">
   <div>© <span id="year"></span> Gianfranco Marchetti — Portfolio</div>
 </footer>
 
-<!-- Three.js modulare -->
+<!-- ==== Three.js (modulare) ==== 
+     usa i moduli ES (full URLs). Non aggiungere altri <script src="three.min.js"> globali! -->
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+/* Try/catch per intercettare eventuali problemi di rete o import */
+try {
+  import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+  import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const wrap = document.getElementById('canvas-wrap');
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
-
-  const camera = new THREE.PerspectiveCamera(45, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
-  camera.position.set(6, 5, 8);
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(wrap.clientWidth, wrap.clientHeight);
-  renderer.setPixelRatio(window.devicePixelRatio || 1);
-  wrap.appendChild(renderer.domElement);
-
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.enablePan = false;
-  controls.autoRotate = true;
-  controls.autoRotateSpeed = 0.6;
-
-  // Lights
-  const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
-  dirLight.position.set(5, 10, 7);
-  scene.add(dirLight);
-  scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
-
-  // Floor
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(30, 30),
-    new THREE.MeshStandardMaterial({ color: 0x111111 })
-  );
-  floor.rotation.x = -Math.PI / 2;
-  floor.position.y = -0.01;
-  scene.add(floor);
-
-  // Gear helper
-  function createGear(radius, teeth, thickness, color){
-    const group = new THREE.Group();
-    const mat = new THREE.MeshStandardMaterial({ metalness: 0.7, roughness: 0.35, color: color });
-    const baseMesh = new THREE.Mesh(new THREE.CylinderGeometry(radius*0.86,radius*0.86,thickness,64), mat);
-    baseMesh.rotation.x = Math.PI/2;
-    group.add(baseMesh);
-
-    const toothGeom = new THREE.BoxGeometry(radius*0.15, thickness*1.05, radius*0.05);
-    for(let i=0;i<teeth;i++){
-      const t = new THREE.Mesh(toothGeom, mat);
-      const angle = (i/teeth) * Math.PI*2;
-      const r = radius*0.95;
-      t.position.set(Math.cos(angle)*r,0,Math.sin(angle)*r);
-      t.rotation.y = -angle;
-      group.add(t);
+  // attendi DOM pronto (anche se script è dopo il markup)
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrap = document.getElementById('canvas-wrap');
+    if (!wrap) {
+      console.error('canvas-wrap non trovato');
+      document.getElementById('js-error').textContent = 'Errore: elemento canvas non trovato.';
+      document.getElementById('js-error').style.display = 'block';
+      return;
     }
-    return group;
-  }
 
-  const gear1 = createGear(1.5,28,0.4,0x4b5563);
-  const gear2 = createGear(1.0,20,0.4,0x1f2937);
-  const gear3 = createGear(0.6,14,0.4,0x374151);
+    // renderer + scene + camera
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
 
-  gear1.position.set(-1.0,0.28,0);
-  gear2.position.set(0.8,0.28,0);
-  gear3.position.set(2.0,0.28,0);
+    const camera = new THREE.PerspectiveCamera(45, Math.max(wrap.clientWidth,1) / Math.max(wrap.clientHeight,1), 0.1, 100);
+    camera.position.set(6, 5, 8);
 
-  scene.add(gear1, gear2, gear3);
-
-  const clock = new THREE.Clock();
-  function animate(){
-    requestAnimationFrame(animate);
-    const t = clock.getElapsedTime();
-    gear1.rotation.z = t*0.6;
-    gear2.rotation.z = -t*0.9;
-    gear3.rotation.z = t*1.2;
-    controls.update();
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', ()=>{
-    camera.aspect = wrap.clientWidth / wrap.clientHeight;
-    camera.updateProjectionMatrix();
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio || 1);
     renderer.setSize(wrap.clientWidth, wrap.clientHeight);
-  });
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    wrap.appendChild(renderer.domElement);
 
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
+    // OrbitControls (modulare)
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.enablePan = false;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.6;
+
+    // luci
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    dirLight.position.set(5, 10, 7);
+    scene.add(dirLight);
+    scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
+
+    // piano sottile
+    const floor = new THREE.Mesh(
+      new THREE.PlaneGeometry(30, 30),
+      new THREE.MeshStandardMaterial({ color: 0x0f0f0f, roughness: 0.9, metalness: 0.0 })
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -0.02;
+    scene.add(floor);
+
+    // funzione per creare ingranaggi
+    function createGear(radius, teeth, thickness, color) {
+      const group = new THREE.Group();
+      const mat = new THREE.MeshStandardMaterial({ metalness: 0.7, roughness: 0.35, color });
+      const baseGeom = new THREE.CylinderGeometry(radius * 0.86, radius * 0.86, thickness, 64);
+      const baseMesh = new THREE.Mesh(baseGeom, mat);
+      baseMesh.rotation.x = Math.PI / 2;
+      group.add(baseMesh);
+
+      const toothGeom = new THREE.BoxGeometry(radius * 0.15, thickness * 1.05, radius * 0.05);
+      for (let i = 0; i < teeth; i++) {
+        const t = new THREE.Mesh(toothGeom, mat);
+        const angle = (i / teeth) * Math.PI * 2;
+        const r = radius * 0.95;
+        t.position.set(Math.cos(angle) * r, 0, Math.sin(angle) * r);
+        t.rotation.y = -angle;
+        group.add(t);
+      }
+      return group;
+    }
+
+    // crea ingranaggi
+    const gear1 = createGear(1.5, 28, 0.4, 0x4b5563);
+    const gear2 = createGear(1.0, 20, 0.4, 0x1f2937);
+    const gear3 = createGear(0.6, 14, 0.4, 0x374151);
+
+    gear1.position.set(-1.0, 0.28, 0);
+    gear2.position.set(0.8, 0.28, 0);
+    gear3.position.set(2.0, 0.28, 0);
+
+    scene.add(gear1, gear2, gear3);
+
+    // particelle sottili (opzionali ma leggere)
+    const particleCount = 180;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3 + 0] = (Math.random() - 0.5) * 20;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+    }
+    const particlesGeo = new THREE.BufferGeometry();
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particlesMat = new THREE.PointsMaterial({ size: 0.06, transparent: true, opacity: 0.7, depthWrite: false, color: 0xffffff });
+    const particles = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particles);
+
+    // animazione
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      gear1.rotation.z = t * 0.6;
+      gear2.rotation.z = -t * 0.9;
+      gear3.rotation.z = t * 1.2;
+      particles.rotation.y = t * 0.02;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // resize handler
+    function onResize() {
+      const w = Math.max(1, wrap.clientWidth);
+      const h = Math.max(1, wrap.clientHeight);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // setta anno footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  }); // end DOMContentLoaded
+
+} catch (err) {
+  console.error('Errore caricamento Three.js modulare:', err);
+  const e = document.getElementById('js-error');
+  if (e) {
+    e.style.display = 'block';
+    e.textContent = 'Errore: impossibile caricare l\'animazione 3D. Apri la console per dettagli.';
+  }
+}
 </script>
 
 </body>

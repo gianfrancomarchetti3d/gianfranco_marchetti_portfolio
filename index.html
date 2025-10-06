@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="it">
 <head>
@@ -5,21 +6,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gianfranco Marchetti — Portfolio</title>
   <style>
-    :root {
-      --bg:#000;
-      --accent:#fff;
-      --muted:#999;
-      --cta:#0ea5a4;
-      --max-width:1100px;
-    }
+    :root{ --bg:#000; --accent:#fff; --muted:#999; --cta:#0ea5a4; --max-width:1100px; }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-      background:var(--bg);
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-    }
+    body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--accent)}
     a{color:var(--cta);text-decoration:none}
     .container{max-width:var(--max-width);margin:40px auto;padding:0 20px}
     .hero{display:flex;align-items:center;gap:40px;padding:40px 20px;position:relative;flex-wrap:wrap;min-height:420px}
@@ -31,8 +20,9 @@
     #canvas-wrap{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
     #canvas-wrap canvas{display:block;width:100%;height:100%}
     section.intro{margin-top:30px;position:relative;z-index:2}
-    .experience, .skills, .languages{margin-bottom:20px}
     footer.site-footer{padding:24px 20px;border-top:1px solid rgba(255,255,255,0.04);margin-top:40px;display:flex;justify-content:space-between;align-items:center}
+    #js-error{display:none;background:#2b0000;color:#ffb3b3;padding:12px;border-radius:8px;margin:12px 20px;font-family:monospace}
+    @media (max-width:900px){ .hero{flex-direction:column-reverse;padding:20px;min-height:320px} #canvas-wrap{height:50vh} }
   </style>
 </head>
 <body>
@@ -51,101 +41,149 @@
   <section class="intro" id="about">
     <h2>Chi sono</h2>
     <p>Grafico 3D con oltre 15 anni di esperienza, specializzato in design digitale, modellazione, animazione e VFX. Ho realizzato Virtual Tour a 360° e progetti internazionali, unendo creatività e competenza tecnica.</p>
+
+    <h3>Esperienze principali</h3>
+    <ul>
+      <li><strong>Geomondo S.r.l. (2006–2011)</strong> — Sviluppo del primo Virtual Tour a 360°, gestione di grandi volumi di foto e integrazioni Street View.</li>
+      <li><strong>Freelance (2012–oggi)</strong> — Titolare, gestione di progetti in Italia e all’estero: modellazione 3D, animazioni, VFX e librerie interattive.</li>
+    </ul>
+
+    <h3>Competenze</h3>
+    <p><strong>Software:</strong> Blender, Cinema 4D, Photoshop, Illustrator, DaVinci Resolve<br>
+       <strong>Skill:</strong> Modellazione 3D, animazione, VFX, gestione progetti, Python, automazione/AI</p>
+
+    <h3>Lingue</h3>
+    <p>Italiano (madrelingua), Inglese B2, Rumeno B2</p>
   </section>
+
+  <div id="js-error" role="alert"></div>
 </main>
 
 <footer class="site-footer container">
   <div>© <span id="year"></span> Gianfranco Marchetti — Portfolio</div>
 </footer>
 
-<!-- ===== THREE.JS MODULARE ===== -->
+<!-- ==== Three.js modulare (USARE SOLO QUESTO script type="module") ==== -->
 <script type="module">
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
-const wrap = document.getElementById('canvas-wrap');
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000000);
+(async () => {
+  try {
+    const wrap = document.getElementById('canvas-wrap');
+    if (!wrap) throw new Error('Elemento #canvas-wrap non trovato');
 
-const camera = new THREE.PerspectiveCamera(45, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
-camera.position.set(6, 5, 8);
+    // scene/camera/renderer
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(wrap.clientWidth, wrap.clientHeight);
-renderer.setPixelRatio(window.devicePixelRatio || 1);
-wrap.appendChild(renderer.domElement);
+    const camera = new THREE.PerspectiveCamera(45, Math.max(1, wrap.clientWidth) / Math.max(1, wrap.clientHeight), 0.1, 100);
+    camera.position.set(6, 5, 8);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.enablePan = false;
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.6;
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    wrap.appendChild(renderer.domElement);
 
-// Luci
-scene.add(new THREE.DirectionalLight(0xffffff, 0.9).position.set(5,10,7));
-scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
+    // controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.enablePan = false;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.6;
 
-// Pavimento
-const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(30, 30),
-  new THREE.MeshStandardMaterial({ color: 0x0f0f0f })
-);
-floor.rotation.x = -Math.PI / 2;
-floor.position.y = -0.02;
-scene.add(floor);
+    // lights
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
+    dirLight.position.set(5, 10, 7);
+    scene.add(dirLight);
+    scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
 
-// Funzione ingranaggio
-function createGear(radius, teeth, thickness, color) {
-  const group = new THREE.Group();
-  const mat = new THREE.MeshStandardMaterial({ metalness: 0.7, roughness: 0.35, color });
-  const baseMesh = new THREE.Mesh(new THREE.CylinderGeometry(radius * 0.86, radius * 0.86, thickness, 64), mat);
-  baseMesh.rotation.x = Math.PI / 2;
-  group.add(baseMesh);
+    // floor
+    const floor = new THREE.Mesh(
+      new THREE.PlaneGeometry(30, 30),
+      new THREE.MeshStandardMaterial({ color: 0x0f0f0f, roughness: 0.9, metalness: 0 })
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -0.02;
+    scene.add(floor);
 
-  const toothGeom = new THREE.BoxGeometry(radius * 0.15, thickness * 1.05, radius * 0.05);
-  for (let i = 0; i < teeth; i++) {
-    const t = new THREE.Mesh(toothGeom, mat);
-    const angle = (i / teeth) * Math.PI * 2;
-    const r = radius * 0.95;
-    t.position.set(Math.cos(angle) * r, 0, Math.sin(angle) * r);
-    t.rotation.y = -angle;
-    group.add(t);
+    // create gear
+    function createGear(radius, teeth, thickness, color) {
+      const group = new THREE.Group();
+      const mat = new THREE.MeshStandardMaterial({ metalness: 0.7, roughness: 0.35, color });
+      const baseGeom = new THREE.CylinderGeometry(radius * 0.86, radius * 0.86, thickness, 64);
+      const baseMesh = new THREE.Mesh(baseGeom, mat);
+      baseMesh.rotation.x = Math.PI / 2;
+      group.add(baseMesh);
+
+      const toothGeom = new THREE.BoxGeometry(radius * 0.15, thickness * 1.05, radius * 0.05);
+      for (let i = 0; i < teeth; i++) {
+        const t = new THREE.Mesh(toothGeom, mat);
+        const angle = (i / teeth) * Math.PI * 2;
+        const r = radius * 0.95;
+        t.position.set(Math.cos(angle) * r, 0, Math.sin(angle) * r);
+        t.rotation.y = -angle;
+        group.add(t);
+      }
+      return group;
+    }
+
+    // gears
+    const gear1 = createGear(1.5, 28, 0.4, 0x4b5563);
+    const gear2 = createGear(1.0, 20, 0.4, 0x1f2937);
+    const gear3 = createGear(0.6, 14, 0.4, 0x374151);
+
+    gear1.position.set(-1.0, 0.28, 0);
+    gear2.position.set(0.8, 0.28, 0);
+    gear3.position.set(2.0, 0.28, 0);
+    scene.add(gear1, gear2, gear3);
+
+    // optional light particles (very light)
+    const particleCount = 120;
+    const pos = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      pos[i * 3 + 0] = (Math.random() - 0.5) * 20;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 6;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 20;
+    }
+    const particlesGeo = new THREE.BufferGeometry();
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const particlesMat = new THREE.PointsMaterial({ size: 0.05, transparent: true, opacity: 0.6, depthWrite: false, color: 0xffffff });
+    const particles = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particles);
+
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      gear1.rotation.z = t * 0.6;
+      gear2.rotation.z = -t * 0.9;
+      gear3.rotation.z = t * 1.2;
+      particles.rotation.y = t * 0.02;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    function onResize() {
+      const w = Math.max(1, wrap.clientWidth);
+      const h = Math.max(1, wrap.clientHeight);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+  } catch (err) {
+    console.error('Errore inizializzazione 3D:', err);
+    const e = document.getElementById('js-error');
+    if (e) { e.style.display = 'block'; e.textContent = 'Errore animazione 3D: ' + (err.message || err); }
   }
-  return group;
-}
-
-// Ingranaggi
-const gear1 = createGear(1.5, 28, 0.4, 0x4b5563);
-const gear2 = createGear(1.0, 20, 0.4, 0x1f2937);
-const gear3 = createGear(0.6, 14, 0.4, 0x374151);
-gear1.position.set(-1, 0.28, 0);
-gear2.position.set(0.8, 0.28, 0);
-gear3.position.set(2.0, 0.28, 0);
-scene.add(gear1, gear2, gear3);
-
-// Animazione
-const clock = new THREE.Clock();
-function animate() {
-  requestAnimationFrame(animate);
-  const t = clock.getElapsedTime();
-  gear1.rotation.z = t * 0.6;
-  gear2.rotation.z = -t * 0.9;
-  gear3.rotation.z = t * 1.2;
-  controls.update();
-  renderer.render(scene, camera);
-}
-animate();
-
-// Resize
-window.addEventListener('resize', () => {
-  const w = wrap.clientWidth, h = wrap.clientHeight;
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-  renderer.setSize(w, h);
-});
-
-// Anno footer
-document.getElementById('year').textContent = new Date().getFullYear();
+})();
 </script>
+
 </body>
 </html>

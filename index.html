@@ -5,9 +5,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gianfranco Marchetti — Portfolio</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Three.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
+  <style>
+    /* Assicura che il canvas si estenda correttamente */
+    #canvas-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; /* dietro il testo */
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1; /* sopra il canvas */
+      color: #ffffff; /* testo bianco leggibile sul nero */
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+      background: #000000;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #000; /* sfondo nero generale */
+      color: #ffffff;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -66,49 +96,47 @@
     </div>
   </footer>
 
-  <!-- Animation script (Three.js) -->
-  <script>
-  // Basic scene: three interlocking gears (visually interesting, performant)
-  (function(){
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+
     const wrap = document.getElementById('canvas-wrap');
-    const width = Math.min(window.innerWidth * 0.55, 900);
-    const height = Math.min(window.innerHeight * 0.6, 600);
-    wrap.style.width = width + 'px';
-    wrap.style.height = height + 'px';
+    const width = wrap.clientWidth;
+    const height = wrap.clientHeight;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf5f5f7);
+    scene.background = new THREE.Color(0x000000); // sfondo nero
 
     const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
     camera.position.set(6, 5, 8);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
+    renderer.setPixelRatio(window.devicePixelRatio || 1);
     wrap.appendChild(renderer.domElement);
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enablePan = false;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.6;
 
-    // Lights
+    // Luci
     const d1 = new THREE.DirectionalLight(0xffffff, 0.9);
     d1.position.set(5, 10, 7);
     scene.add(d1);
     scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
 
-    // Floor subtle reflection
+    // Pavimento leggermente visibile
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(30, 30),
-      new THREE.MeshStandardMaterial({ color: 0xf0f0f2 })
+      new THREE.MeshStandardMaterial({ color: 0x111111 })
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -0.01;
     scene.add(floor);
 
-    // Gear helper: creates a gear-like object using teeth approximation
+    // Funzione per creare ingranaggi
     function createGear(radius, teeth, thickness, color) {
       const group = new THREE.Group();
       const base = new THREE.CylinderGeometry(radius * 0.86, radius * 0.86, thickness, 64);
@@ -139,7 +167,18 @@
 
     scene.add(gear1, gear2, gear3);
 
-    // subtle pivot and animation
+    // Particelle sullo sfondo
+    const particleCount = 200;
+    const particlesGeometry = new THREE.BufferGeometry();
+    const positions = [];
+    for (let i = 0; i < particleCount; i++) {
+      positions.push((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 20);
+    }
+    particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    const particlesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.08, transparent: true, opacity: 0.7 });
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
+
     const clock = new THREE.Clock();
 
     function animate() {
@@ -148,23 +187,23 @@
       gear1.rotation.z = t * 0.6;
       gear2.rotation.z = -t * 0.9;
       gear3.rotation.z = t * 1.2;
+      particles.rotation.y += 0.0005;
+      particles.rotation.x += 0.0002;
       controls.update();
       renderer.render(scene, camera);
     }
     animate();
 
-    // responsive
-    window.addEventListener('resize', ()=> {
-      const w = Math.min(window.innerWidth * 0.55, 900);
-      const h = Math.min(window.innerHeight * 0.6, 600);
+    window.addEventListener('resize', () => {
+      const w = wrap.clientWidth;
+      const h = wrap.clientHeight;
       renderer.setSize(w, h);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     });
 
-    // set year
     document.getElementById('year').textContent = new Date().getFullYear();
-  })();
   </script>
 </body>
 </html>
+

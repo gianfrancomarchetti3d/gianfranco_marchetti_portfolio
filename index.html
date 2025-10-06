@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gianfranco Marchetti — Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="index.html">Gianfranco Marchetti</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Gianfranco Marchetti</h1>
+        <p class="subtitle">Grafico 3D • Animazione • VFX — 15+ anni</p>
+        <p class="lead">Creo esperienze visive e prototipi 3D per clienti internazionali. Scorri per vedere il mio lavoro.</p>
+        <a class="cta" href="portfolio.html" role="button">Vedi il portfolio</a>
+      </div>
+      <div id="canvas-wrap" class="hero-canvas" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Chi sono</h2>
+      <p>
+        Grafico 3D con oltre 15 anni di esperienza, specializzato in innovazione digitale,
+        Virtual Tour a 360°, animazione e modellazione. Ho guidato progetti complessi e lavori
+        internazionali, con un approccio pratico e orientato al risultato.
+      </p>
+    </section>
+
+    <section class="highlights">
+      <article>
+        <h3>Virtual Tour & Mapping</h3>
+        <p>Ho sviluppato il primo Virtual Tour a 360° per mappare interi territori e collaborato su implementazioni Street View ad alta scala.</p>
+      </article>
+      <article>
+        <h3>3D & VFX</h3>
+        <p>Modellazione, animazioni e VFX per pubblicità e progetti interattivi. Strumenti principali: Blender, Cinema 4D.</p>
+      </article>
+      <article>
+        <h3>AI & Scripting</h3>
+        <p>Competenze in Python e integrazione di tool automatizzati per workflow 3D e gestione asset.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> Gianfranco Marchetti — <a href="portfolio.html">Portfolio</a></div>
+    <div class="socials">
+      <a href="https://www.artstation.com/gianfrancomarchetti1" target="_blank" rel="noopener">ArtStation</a> ·
+      <a href="https://www.linkedin.com/in/gianfranco-marchetti-b79154263/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="mailto:gianfranco.marchetti@blu.it">Email</a>
+    </div>
+  </footer>
+
+  <!-- Animation script (Three.js) -->
+  <script>
+  // Basic scene: three interlocking gears (visually interesting, performant)
+  (function(){
+    const wrap = document.getElementById('canvas-wrap');
+    const width = Math.min(window.innerWidth * 0.55, 900);
+    const height = Math.min(window.innerHeight * 0.6, 600);
+    wrap.style.width = width + 'px';
+    wrap.style.height = height + 'px';
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf5f5f7);
+
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+    camera.position.set(6, 5, 8);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
+    wrap.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.enablePan = false;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.6;
+
+    // Lights
+    const d1 = new THREE.DirectionalLight(0xffffff, 0.9);
+    d1.position.set(5, 10, 7);
+    scene.add(d1);
+    scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
+
+    // Floor subtle reflection
+    const floor = new THREE.Mesh(
+      new THREE.PlaneGeometry(30, 30),
+      new THREE.MeshStandardMaterial({ color: 0xf0f0f2 })
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -0.01;
+    scene.add(floor);
+
+    // Gear helper: creates a gear-like object using teeth approximation
+    function createGear(radius, teeth, thickness, color) {
+      const group = new THREE.Group();
+      const base = new THREE.CylinderGeometry(radius * 0.86, radius * 0.86, thickness, 64);
+      const mat = new THREE.MeshStandardMaterial({ metalness: 0.7, roughness: 0.35, color: color });
+      const baseMesh = new THREE.Mesh(base, mat);
+      baseMesh.rotation.x = Math.PI / 2;
+      group.add(baseMesh);
+
+      const toothGeom = new THREE.BoxGeometry(radius * 0.15, thickness * 1.05, radius * 0.05);
+      for (let i = 0; i < teeth; i++) {
+        const t = new THREE.Mesh(toothGeom, mat);
+        const angle = (i / teeth) * Math.PI * 2;
+        const r = radius * 0.95;
+        t.position.set(Math.cos(angle) * r, 0, Math.sin(angle) * r);
+        t.rotation.y = -angle;
+        group.add(t);
+      }
+      return group;
+    }
+
+    const gear1 = createGear(1.5, 28, 0.4, 0x4b5563);
+    const gear2 = createGear(1.0, 20, 0.4, 0x1f2937);
+    const gear3 = createGear(0.6, 14, 0.4, 0x374151);
+
+    gear1.position.set(-1.0, 0.28, 0);
+    gear2.position.set(0.8, 0.28, 0);
+    gear3.position.set(2.0, 0.28, 0);
+
+    scene.add(gear1, gear2, gear3);
+
+    // subtle pivot and animation
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      gear1.rotation.z = t * 0.6;
+      gear2.rotation.z = -t * 0.9;
+      gear3.rotation.z = t * 1.2;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // responsive
+    window.addEventListener('resize', ()=> {
+      const w = Math.min(window.innerWidth * 0.55, 900);
+      const h = Math.min(window.innerHeight * 0.6, 600);
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    });
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>

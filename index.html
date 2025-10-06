@@ -1,8 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gianfranco Marchetti — Portfolio</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --bg:#000;
+    --accent:#fff;
+    --muted:#aaa;
+    --cta:#0ea5a4;
+    --card:rgba(30,30,30,0.9);
+    --max-width:1100px;
+  }
+  body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--accent);}
+  a{color:var(--cta);text-decoration:none;}
+  .container{max-width:var(--max-width);margin:40px auto;padding:0 20px;}
+  .hero{display:flex;align-items:center;gap:40px;padding:40px 20px;position:relative;flex-wrap:wrap;}
+  .hero-text{max-width:540px;position:relative;z-index:1;}
+  .hero-text h1{margin:0;font-size:2rem;}
+  .subtitle{color:var(--muted);margin-top:6px;font-weight:600;}
+  .lead{color:#ccc;}
+  .cta{display:inline-block;margin-top:16px;background:var(--cta);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;}
+  #canvas-wrap{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;min-height:400px;}
+  section.intro{margin-top:30px;}
+  section.intro h2{margin-bottom:16px;}
+  .experience, .skills, .languages{margin-bottom:20px;}
+  .experience li{margin-bottom:10px;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-text">
+    <h1>Gianfranco Marchetti</h1>
+    <p class="subtitle">Grafico 3D • Animazione • VFX — 15+ anni</p>
+    <p class="lead">Creo esperienze visive e prototipi 3D per clienti internazionali. Scorri per vedere il mio lavoro.</p>
+    <a class="cta" href="#about">Chi sono</a>
+  </div>
+  <div id="canvas-wrap"></div>
+</header>
+
+<main class="container">
+  <section class="intro" id="about">
+    <h2>Chi sono</h2>
+    <p class="profile">
+      Grafico 3D con oltre 15 anni di esperienza, specializzato in design digitale, modellazione, animazione e VFX. Ho realizzato Virtual Tour a 360° e progetti internazionali, unendo creatività e competenza tecnica.
+    </p>
+
+    <h3>Esperienze principali</h3>
+    <ul class="experience">
+      <li><strong>Geomondo S.r.l. (2006–2011)</strong> — Sviluppo del primo Virtual Tour a 360°, gestione di grandi volumi di foto e integrazioni Street View.</li>
+      <li><strong>Freelance (2012–oggi)</strong> — Titolare, gestione di progetti in Italia e all’estero: modellazione 3D, animazioni, VFX e librerie interattive.</li>
+    </ul>
+
+    <h3>Competenze</h3>
+    <p class="skills">
+      <strong>Software:</strong> Blender, Cinema 4D, Photoshop, Illustrator, DaVinci Resolve<br>
+      <strong>Skill:</strong> Modellazione 3D, animazione, VFX, gestione progetti, leadership, Python e automazione/AI
+    </p>
+
+    <h3>Lingue</h3>
+    <p class="languages">
+      Italiano (madrelingua), Inglese B2, Rumeno B2
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer container">
+  <div>© <span id="year"></span> Gianfranco Marchetti — Portfolio</div>
+</footer>
+
 <!-- Three.js globale -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
-
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   const wrap = document.getElementById('canvas-wrap');
   const width = wrap.clientWidth;
   const height = wrap.clientHeight;
@@ -24,7 +98,7 @@
   controls.autoRotate = true;
   controls.autoRotateSpeed = 0.6;
 
-  // Luci
+  // Lights
   const dirLight = new THREE.DirectionalLight(0xffffff,0.9);
   dirLight.position.set(5,10,7);
   scene.add(dirLight);
@@ -39,7 +113,7 @@
   floor.position.y = -0.01;
   scene.add(floor);
 
-  // Gears (stessa funzione createGear di prima)
+  // Gears
   function createGear(radius, teeth, thickness, color){
     const group = new THREE.Group();
     const base = new THREE.CylinderGeometry(radius*0.86,radius*0.86,thickness,64);
@@ -47,6 +121,7 @@
     const baseMesh = new THREE.Mesh(base,mat);
     baseMesh.rotation.x = Math.PI/2;
     group.add(baseMesh);
+
     const toothGeom = new THREE.BoxGeometry(radius*0.15,thickness*1.05,radius*0.05);
     for(let i=0;i<teeth;i++){
       const t = new THREE.Mesh(toothGeom,mat);
@@ -81,7 +156,7 @@
   }
   animate();
 
-  window.addEventListener('resize',()=>{
+  window.addEventListener('resize', ()=>{
     const w = wrap.clientWidth;
     const h = wrap.clientHeight;
     renderer.setSize(w,h);
@@ -90,4 +165,8 @@
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
+});
 </script>
+
+</body>
+</html>

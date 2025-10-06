@@ -1,0 +1,43 @@
+:root{
+  --bg:#ffffff;
+  --accent:#0f172a;
+  --muted:#6b7280;
+  --cta:#0ea5a4;
+  --card:#fbfbfd;
+  --max-width:1100px;
+  --gap:20px;
+}
+*{box-sizing:border-box}
+body{
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0;
+  background:var(--bg);
+  color:var(--accent);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:var(--cta); text-decoration:none}
+.container{max-width:var(--max-width); margin:40px auto; padding:0 20px}
+.site-header{background:linear-gradient(90deg,#fff,#fbfdfe); border-bottom:1px solid #eef2f7; padding:18px 0}
+.nav{display:flex; align-items:center; justify-content:space-between; max-width:var(--max-width); margin:0 auto; padding:0 20px}
+.logo{font-weight:700; font-size:1.05rem}
+.nav-links{list-style:none; display:flex; gap:18px; margin:0; padding:0}
+.nav-links a{color:var(--muted); font-weight:600}
+.hero{display:flex; align-items:center; gap:40px; padding:40px 20px; max-width:var(--max-width); margin:0 auto}
+.hero-text{max-width:540px}
+.hero-text h1{margin:0; font-size:2rem}
+.subtitle{color:var(--muted); margin-top:6px; font-weight:600}
+.lead{color:#475569}
+.cta{display:inline-block; margin-top:16px; background:var(--cta); color:white; padding:10px 16px; border-radius:8px; font-weight:700}
+.hero-canvas{flex:1; display:flex; align-items:center; justify-content:center; min-height:360px}
+.intro, .highlights{margin-top:30px}
+.highlights{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px}
+.highlights article{background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+.site-footer{display:flex; justify-content:space-between; align-items:center; padding:24px 20px; border-top:1px solid #eef2f7; margin-top:40px; max-width:var(--max-width); margin-left:auto; margin-right:auto}
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:20px}
+.card{background:var(--card); padding:18px; border-radius:10px; box-shadow:0 4px 14px rgba(2,6,23,0.04)}
+.artstation{font-weight:700; color:var(--accent)}
+@media (max-width:900px){
+  .hero{flex-direction:column-reverse; padding:20px}
+  .hero-canvas{width:100%}
+}

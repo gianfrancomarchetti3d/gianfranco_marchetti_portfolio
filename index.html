@@ -1,209 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gianfranco Marchetti — Portfolio</title>
   <link rel="stylesheet" href="styles.css">
-
   <style>
-    /* Assicura che il canvas si estenda correttamente */
-    #canvas-wrap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0; /* dietro il testo */
+    /* Dark theme base (puoi rimuovere se hai già styles.css) */
+    :root{
+      --bg:#000000;
+      --accent:#ffffff;
+      --muted:#aaaaaa;
+      --cta:#0ea5a4;
+      --card:rgba(30,30,30,0.9);
+      --max-width:1100px;
+      --gap:20px;
     }
-
-    .hero-text {
-      position: relative;
-      z-index: 1; /* sopra il canvas */
-      color: #ffffff; /* testo bianco leggibile sul nero */
-    }
-
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-      overflow: hidden;
-      background: #000000;
-    }
-
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #000; /* sfondo nero generale */
-      color: #ffffff;
-    }
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--accent);}
+    a{color:var(--cta);text-decoration:none;}
+    .container{max-width:var(--max-width);margin:40px auto;padding:0 20px;}
+    .hero{display:flex;align-items:center;gap:40px;padding:40px 20px;position:relative;flex-wrap:wrap;}
+    .hero-text{max-width:540px;position:relative;z-index:1;}
+    .hero-text h1{margin:0;font-size:2rem;}
+    .subtitle{color:var(--muted);margin-top:6px;font-weight:600;}
+    .lead{color:#cccccc;}
+    .cta{display:inline-block;margin-top:16px;background:var(--cta);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;}
+    .hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;min-height:400px;}
+    section.intro{margin-top:30px;}
+    section.intro h2{margin-bottom:16px;}
+    .experience, .skills, .languages{margin-bottom:20px;}
+    .experience li{margin-bottom:10px;}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="logo" href="index.html">Gianfranco Marchetti</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hero">
-      <div class="hero-text">
-        <h1>Gianfranco Marchetti</h1>
-        <p class="subtitle">Grafico 3D • Animazione • VFX — 15+ anni</p>
-        <p class="lead">Creo esperienze visive e prototipi 3D per clienti internazionali. Scorri per vedere il mio lavoro.</p>
-        <a class="cta" href="portfolio.html" role="button">Vedi il portfolio</a>
-      </div>
-      <div id="canvas-wrap" class="hero-canvas" aria-hidden="true"></div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="intro">
-      <h2>Chi sono</h2>
-      <p>
-        Grafico 3D con oltre 15 anni di esperienza, specializzato in innovazione digitale,
-        Virtual Tour a 360°, animazione e modellazione. Ho guidato progetti complessi e lavori
-        internazionali, con un approccio pratico e orientato al risultato.
-      </p>
-    </section>
+<header class="hero">
+  <div class="hero-text">
+    <h1>Gianfranco Marchetti</h1>
+    <p class="subtitle">Grafico 3D • Animazione • VFX — 15+ anni</p>
+    <p class="lead">Creo esperienze visive e prototipi 3D per clienti internazionali. Scorri per vedere il mio lavoro.</p>
+    <a class="cta" href="#about">Chi sono</a>
+  </div>
+  <div id="canvas-wrap" class="hero-canvas"></div>
+</header>
 
-    <section class="highlights">
-      <article>
-        <h3>Virtual Tour & Mapping</h3>
-        <p>Ho sviluppato il primo Virtual Tour a 360° per mappare interi territori e collaborato su implementazioni Street View ad alta scala.</p>
-      </article>
-      <article>
-        <h3>3D & VFX</h3>
-        <p>Modellazione, animazioni e VFX per pubblicità e progetti interattivi. Strumenti principali: Blender, Cinema 4D.</p>
-      </article>
-      <article>
-        <h3>AI & Scripting</h3>
-        <p>Competenze in Python e integrazione di tool automatizzati per workflow 3D e gestione asset.</p>
-      </article>
-    </section>
-  </main>
+<main class="container">
+  <section class="intro" id="about">
+    <h2>Chi sono</h2>
+    <p class="profile">
+      Grafico 3D con oltre 15 anni di esperienza, specializzato in design digitale, modellazione, animazione e VFX. Ho realizzato Virtual Tour a 360° e progetti internazionali, unendo creatività e competenza tecnica.
+    </p>
 
-  <footer class="site-footer">
-    <div>© <span id="year"></span> Gianfranco Marchetti — <a href="portfolio.html">Portfolio</a></div>
-    <div class="socials">
-      <a href="https://www.artstation.com/gianfrancomarchetti1" target="_blank" rel="noopener">ArtStation</a> ·
-      <a href="https://www.linkedin.com/in/gianfranco-marchetti-b79154263/" target="_blank" rel="noopener">LinkedIn</a> ·
-      <a href="mailto:gianfranco.marchetti@blu.it">Email</a>
-    </div>
-  </footer>
+    <h3>Esperienze principali</h3>
+    <ul class="experience">
+      <li><strong>Geomondo S.r.l. (2006–2011)</strong> — Sviluppo del primo Virtual Tour a 360°, gestione di grandi volumi di foto e integrazioni Street View.</li>
+      <li><strong>Freelance (2012–oggi)</strong> — Titolare, gestione di progetti in Italia e all’estero: modellazione 3D, animazioni, VFX e librerie interattive.</li>
+    </ul>
 
-  <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+    <h3>Competenze</h3>
+    <p class="skills">
+      <strong>Software:</strong> Blender, Cinema 4D, Photoshop, Illustrator, DaVinci Resolve<br>
+      <strong>Skill:</strong> Modellazione 3D, animazione, VFX, gestione progetti, leadership, Python e automazione/AI
+    </p>
 
-    const wrap = document.getElementById('canvas-wrap');
-    const width = wrap.clientWidth;
-    const height = wrap.clientHeight;
+    <h3>Lingue</h3>
+    <p class="languages">
+      Italiano (madrelingua), Inglese B2, Rumeno B2
+    </p>
+  </section>
+</main>
 
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000); // sfondo nero
+<footer class="site-footer container">
+  <div>© <span id="year"></span> Gianfranco Marchetti — Portfolio</div>
+</footer>
 
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.set(6, 5, 8);
+<!-- Three.js + animazione ingranaggi -->
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio || 1);
-    wrap.appendChild(renderer.domElement);
+const wrap = document.getElementById('canvas-wrap');
+const width = wrap.clientWidth;
+const height = wrap.clientHeight;
 
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.enablePan = false;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.6;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
 
-    // Luci
-    const d1 = new THREE.DirectionalLight(0xffffff, 0.9);
-    d1.position.set(5, 10, 7);
-    scene.add(d1);
-    scene.add(new THREE.AmbientLight(0x7a7a7a, 0.8));
+const camera = new THREE.PerspectiveCamera(45, width/height, 0.1, 100);
+camera.position.set(6,5,8);
 
-    // Pavimento leggermente visibile
-    const floor = new THREE.Mesh(
-      new THREE.PlaneGeometry(30, 30),
-      new THREE.MeshStandardMaterial({ color: 0x111111 })
-    );
-    floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -0.01;
-    scene.add(floor);
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setSize(width,height);
+renderer.setPixelRatio(window.devicePixelRatio || 1);
+wrap.appendChild(renderer.domElement);
 
-    // Funzione per creare ingranaggi
-    function createGear(radius, teeth, thickness, color) {
-      const group = new THREE.Group();
-      const base = new THREE.CylinderGeometry(radius * 0.86, radius * 0.86, thickness, 64);
-      const mat = new THREE.MeshStandardMaterial({ metalness: 0.7, roughness: 0.35, color: color });
-      const baseMesh = new THREE.Mesh(base, mat);
-      baseMesh.rotation.x = Math.PI / 2;
-      group.add(baseMesh);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.enablePan = false;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.6;
 
-      const toothGeom = new THREE.BoxGeometry(radius * 0.15, thickness * 1.05, radius * 0.05);
-      for (let i = 0; i < teeth; i++) {
-        const t = new THREE.Mesh(toothGeom, mat);
-        const angle = (i / teeth) * Math.PI * 2;
-        const r = radius * 0.95;
-        t.position.set(Math.cos(angle) * r, 0, Math.sin(angle) * r);
-        t.rotation.y = -angle;
-        group.add(t);
-      }
-      return group;
-    }
+// Lights
+const dirLight = new THREE.DirectionalLight(0xffffff,0.9);
+dirLight.position.set(5,10,7);
+scene.add(dirLight);
+scene.add(new THREE.AmbientLight(0x7a7a7a,0.8));
 
-    const gear1 = createGear(1.5, 28, 0.4, 0x4b5563);
-    const gear2 = createGear(1.0, 20, 0.4, 0x1f2937);
-    const gear3 = createGear(0.6, 14, 0.4, 0x374151);
+// Floor
+const floor = new THREE.Mesh(
+  new THREE.PlaneGeometry(30,30),
+  new THREE.MeshStandardMaterial({color:0x111111})
+);
+floor.rotation.x = -Math.PI/2;
+floor.position.y = -0.01;
+scene.add(floor);
 
-    gear1.position.set(-1.0, 0.28, 0);
-    gear2.position.set(0.8, 0.28, 0);
-    gear3.position.set(2.0, 0.28, 0);
+// Gears
+function createGear(radius, teeth, thickness, color){
+  const group = new THREE.Group();
+  const base = new THREE.CylinderGeometry(radius*0.86,radius*0.86,thickness,64);
+  const mat = new THREE.MeshStandardMaterial({metalness:0.7,roughness:0.35,color:color});
+  const baseMesh = new THREE.Mesh(base,mat);
+  baseMesh.rotation.x = Math.PI/2;
+  group.add(baseMesh);
 
-    scene.add(gear1, gear2, gear3);
+  const toothGeom = new THREE.BoxGeometry(radius*0.15,thickness*1.05,radius*0.05);
+  for(let i=0;i<teeth;i++){
+    const t = new THREE.Mesh(toothGeom,mat);
+    const angle = (i/teeth)*Math.PI*2;
+    const r = radius*0.95;
+    t.position.set(Math.cos(angle)*r,0,Math.sin(angle)*r);
+    t.rotation.y = -angle;
+    group.add(t);
+  }
+  return group;
+}
 
-    // Particelle sullo sfondo
-    const particleCount = 200;
-    const particlesGeometry = new THREE.BufferGeometry();
-    const positions = [];
-    for (let i = 0; i < particleCount; i++) {
-      positions.push((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 20);
-    }
-    particlesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.08, transparent: true, opacity: 0.7 });
-    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particles);
+const gear1 = createGear(1.5,28,0.4,0x4b5563);
+const gear2 = createGear(1.0,20,0.4,0x1f2937);
+const gear3 = createGear(0.6,14,0.4,0x374151);
 
-    const clock = new THREE.Clock();
+gear1.position.set(-1.0,0.28,0);
+gear2.position.set(0.8,0.28,0);
+gear3.position.set(2.0,0.28,0);
 
-    function animate() {
-      requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
-      gear1.rotation.z = t * 0.6;
-      gear2.rotation.z = -t * 0.9;
-      gear3.rotation.z = t * 1.2;
-      particles.rotation.y += 0.0005;
-      particles.rotation.x += 0.0002;
-      controls.update();
-      renderer.render(scene, camera);
-    }
-    animate();
+scene.add(gear1,gear2,gear3);
 
-    window.addEventListener('resize', () => {
-      const w = wrap.clientWidth;
-      const h = wrap.clientHeight;
-      renderer.setSize(w, h);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    });
+const clock = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime();
+  gear1.rotation.z = t*0.6;
+  gear2.rotation.z = -t*0.9;
+  gear3.rotation.z = t*1.2;
+  controls.update();
+  renderer.render(scene,camera);
+}
+animate();
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+window.addEventListener('resize',()=>{
+  const w = wrap.clientWidth;
+  const h = wrap.clientHeight;
+  renderer.setSize(w,h);
+  camera.aspect = w/h;
+  camera.updateProjectionMatrix();
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
-

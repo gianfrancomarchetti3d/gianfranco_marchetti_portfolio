@@ -1,50 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio — Gianfranco Marchetti</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Gianfranco Marchetti</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: #000 url('images/sfondo3d.png') center/cover no-repeat;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* Menu navigazione */
+  nav {
+    background-color: rgba(0,0,0,0.8);
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  nav a {
+    color: #00ff00; /* verde */
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #66ff66;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  p.lead {
+    color: #ccc;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+
+  /* Portfolio grid */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .portfolio-grid img {
+    width: 220px;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    object-fit: cover;
+  }
+
+  .portfolio-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.4);
+  }
+
+  footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Render 3D caption */
+  .render-caption {
+    margin-top: 20px;
+    color: #00ff00;
+    text-align: center;
+  }
+
+  .render-caption h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .render-caption p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+  }
+
+  .render-caption .btn {
+    display: inline-block;
+    background-color: #00ff00;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .render-caption .btn:hover {
+    background-color: #66ff66;
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="logo" href="index.html">Gianfranco Marchetti</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="container">
-    <h1>Portfolio</h1>
-    <p>Di seguito alcuni lavori selezionati. Per la gallery completa visita il mio ArtStation:</p>
-    <p><a class="artstation" href="https://www.artstation.com/gianfrancomarchetti1" target="_blank" rel="noopener">ArtStation — gianfrancomarchetti1</a></p>
+<!-- Menu Navigazione -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-    <section class="grid">
-      <!-- Inserisci miniature o immagini pubblicate se vuoi: per ora link esterno -->
-      <article class="card">
-        <h3>Progetto: Biblioteca interattiva</h3>
-        <p>Interattività 3D e UX per esplorazione documentale.</p>
-      </article>
-      <article class="card">
-        <h3>Modellazione & VFX</h3>
-        <p>Advertising e visual per campagne digitali.</p>
-      </article>
-      <article class="card">
-        <h3>Virtual Tour / Mapping</h3>
-        <p>Progetti di mappatura e street integration.</p>
-      </article>
-    </section>
-  </main>
+<!-- Render 3D Interattivo -->
+<div id="three-render" style="width: 100%; max-width: 800px; height: 500px; margin: 60px auto;"></div>
+<div class="render-caption">
+  <h2>Progetto 3D di Eccellenza</h2>
+  <p>Modellazioni e animazioni professionali per aziende creative.</p>
+  <a href="portfolio.html" class="btn">Scopri di più</a>
+</div>
 
-  <footer class="site-footer">
-    <div>© <span id="year3"></span> — Portfolio</div>
-  </footer>
+<div class="container">
+  <h1>Portfolio</h1>
+  <p class="lead">Aiuto le aziende a realizzare modellazioni, animazioni e progetti 3D complessi anche quando serve un approccio creativo e veloce per ottenere risultati professionali.</p>
 
-  <script>document.getElementById('year3').textContent = new Date().getFullYear();</script>
+  <div class="portfolio-grid">
+    <img src="images/progetto1.png" alt="Progetto 1">
+    <img src="images/progetto2.png" alt="Progetto 2">
+    <img src="images/progetto3.jpeg" alt="Progetto 3">
+    <img src="images/progetto4.png" alt="Progetto 4">
+  </div>
+</div>
+
+<footer>
+  © <span id="year"></span> Gianfranco Marchetti
+</footer>
+
+<!-- Three.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script>
+  // Scene
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x000000);
+
+  // Camera
+  const camera = new THREE.PerspectiveCamera(75, Math.min(window.innerWidth, 800) / 500, 0.1, 1000);
+  camera.position.z = 3;
+
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(Math.min(window.innerWidth, 800), 500);
+  document.getElementById('three-render').appendChild(renderer.domElement);
+
+  // Cube
+  const geometry = new THREE.BoxGeometry();
+  const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  directionalLight.position.set(5,5,5);
+  scene.add(directionalLight);
+
+  // Resize
+  window.addEventListener('resize', () => {
+    renderer.setSize(Math.min(window.innerWidth, 800), 500);
+    camera.aspect = Math.min(window.innerWidth, 800) / 500;
+    camera.updateProjectionMatrix();
+  });
+
+  // Animate
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>

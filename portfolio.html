@@ -9,7 +9,7 @@
   body {
     margin: 0;
     font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    background: #000 url('images/sfondo3d.png') center/cover no-repeat;
+    background-color: #000; /* sfondo nero */
     color: #fff;
     overflow-x: hidden;
   }
@@ -22,7 +22,7 @@
   }
 
   nav a {
-    color: #00ff00; /* verde */
+    color: #00ff00;
     text-decoration: none;
     margin: 0 20px;
     font-weight: bold;
@@ -52,7 +52,6 @@
     margin-bottom: 40px;
   }
 
-  /* Portfolio grid */
   .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -83,37 +82,12 @@
     border-top: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* Render 3D caption */
-  .render-caption {
-    margin-top: 20px;
-    color: #00ff00;
-    text-align: center;
-  }
-
-  .render-caption h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  .render-caption p {
-    font-size: 1.1rem;
-    color: #ccc;
-    margin-bottom: 15px;
-  }
-
-  .render-caption .btn {
-    display: inline-block;
-    background-color: #00ff00;
-    color: #000;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-
-  .render-caption .btn:hover {
-    background-color: #66ff66;
+  /* Cubo render */
+  #three-render {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 60px auto;
   }
 </style>
 </head>
@@ -127,13 +101,8 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- Render 3D Interattivo -->
-<div id="three-render" style="width: 100%; max-width: 800px; height: 500px; margin: 60px auto;"></div>
-<div class="render-caption">
-  <h2>Progetto 3D di Eccellenza</h2>
-  <p>Modellazioni e animazioni professionali per aziende creative.</p>
-  <a href="portfolio.html" class="btn">Scopri di più</a>
-</div>
+<!-- Cubo verde 3D -->
+<div id="three-render"></div>
 
 <div class="container">
   <h1>Portfolio</h1>
@@ -151,53 +120,46 @@
   © <span id="year"></span> Gianfranco Marchetti
 </footer>
 
-<!-- Three.js Script -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script>
-  // Scene
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
+<!-- Three.js ES Module -->
+<script type="module">
+import * as THREE from './three.module.js';
 
-  // Camera
-  const camera = new THREE.PerspectiveCamera(75, Math.min(window.innerWidth, 800) / 500, 0.1, 1000);
-  camera.position.z = 3;
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Renderer
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(Math.min(window.innerWidth, 800), 500);
-  document.getElementById('three-render').appendChild(renderer.domElement);
+/* --- Cubo verde centrale --- */
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
+const camera = new THREE.PerspectiveCamera(75, Math.min(window.innerWidth,800)/500, 0.1, 1000);
+camera.position.z = 3;
 
-  // Cube
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+const renderer = new THREE.WebGLRenderer({ antialias:true });
+renderer.setSize(Math.min(window.innerWidth,800), 500);
+document.getElementById('three-render').appendChild(renderer.domElement);
 
-  // Lights
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-  scene.add(ambientLight);
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  directionalLight.position.set(5,5,5);
-  scene.add(directionalLight);
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshStandardMaterial({ color:0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-  // Resize
-  window.addEventListener('resize', () => {
-    renderer.setSize(Math.min(window.innerWidth, 800), 500);
-    camera.aspect = Math.min(window.innerWidth, 800) / 500;
-    camera.updateProjectionMatrix();
-  });
+const ambientLight = new THREE.AmbientLight(0xffffff,0.7);
+scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff,0.5);
+directionalLight.position.set(5,5,5);
+scene.add(directionalLight);
 
-  // Animate
-  function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  }
-  animate();
+function animate(){
+  requestAnimationFrame(animate);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+animate();
 
-  // Year in footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+window.addEventListener('resize',()=>{
+  camera.aspect = Math.min(window.innerWidth,800)/500;
+  camera.updateProjectionMatrix();
+  renderer.setSize(Math.min(window.innerWidth,800),500);
+});
 </script>
 
 </body>

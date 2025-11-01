@@ -10,7 +10,8 @@
     margin: 0;
     background-color: #000; /* sfondo nero */
     color: #fff; /* testo bianco */
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
   }
 
   /* Menu */
@@ -23,6 +24,7 @@
     width: 100%;
     top: 0;
     z-index: 10;
+    border-bottom: 1px solid #111;
   }
 
   nav a {
@@ -32,31 +34,36 @@
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s;
-    cursor: default; /* disattiva link */
+    cursor: default;
   }
 
   nav a:hover {
-    color: #99ffcc; /* verde chiaro al passaggio del mouse */
+    color: #99ffcc;
   }
 
   /* Contenuto principale */
   .content {
     text-align: center;
-    padding-top: 120px; /* spazio per il menu fisso */
+    padding-top: 130px; /* spazio per il menu fisso */
     max-width: 900px;
     margin: 0 auto;
+    padding-bottom: 100px;
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 50px;
     margin-bottom: 20px;
-    color: #00ff66; /* verde */
+    color: #00ff66;
   }
 
   p {
     font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+  }
+
+  strong {
+    color: #00ff66;
+    font-weight: 600;
   }
 
   footer {
@@ -64,6 +71,7 @@
     padding: 30px;
     color: #666;
     font-size: 14px;
+    border-top: 1px solid #111;
   }
 </style>
 </head>
@@ -80,15 +88,21 @@
 <!-- Contenuto principale -->
 <div class="content">
   <h1>Gianfranco Marchetti</h1>
-  <p>3D Consultant | Calcinate (BG), Italy</p>
-  <p>I’m a 3D artist specialized in modeling, texturing, and rendering with <strong>Blender</strong>.</p>
-  <p>I create realistic product visualizations and detailed environments using <strong>PBR workflows</strong> and efficient lighting setups.</p>
-  <p>My goal is to deliver visually strong and technically clean 3D assets ready for games, animation, or marketing visualization.</p>
-  <p>I’m available for freelance collaborations and remote work — feel free to contact me for projects, partnerships, or commissions.</p>
-  <p>Specialized in architectural visualization, interior/exterior rendering, and product rendering — crafting compelling visuals that tell emotional and immersive stories.</p>
-  <p>Collaborated with an international video game development team, designing highly detailed and atmospheric 3D environments — refining skills in composition, lighting, texturing, and visual storytelling.</p>
-  <p>Active member of Blender Italia Association and administrator of the Blender Italia User Group of Bergamo, promoting the professional culture of 3D art and visualization.</p>
-  <p>Excited to contribute to projects in game-art production, environment creation, and product/asset rendering.</p>
+  <p><strong>3D Consultant & Artist</strong> | Calcinate (BG), Italy</p>
+
+  <p>I’m a <strong>3D artist</strong> specialized in <strong>modeling, texturing, rendering, and visual effects (VFX)</strong> using <strong>Blender</strong> as my primary tool.</p>
+
+  <p>I create <strong>realistic product visualizations</strong>, <strong>architectural renders</strong>, and <strong>detailed environments</strong> using efficient <strong>PBR workflows</strong> and advanced lighting setups.</p>
+
+  <p>My skills extend to <strong>creature and character modeling</strong>, <strong>rigging</strong>, and <strong>animation</strong>, with a focus on delivering expressive, believable, and technically optimized assets for both cinematic and real-time production.</p>
+
+  <p>My goal is to craft <strong>visually strong and technically clean 3D assets</strong> ready for <strong>games</strong>, <strong>animation</strong>, or <strong>marketing visualization</strong> — assets that combine aesthetic impact with production efficiency.</p>
+
+  <p>I’ve collaborated with an <strong>international video game development team</strong>, creating immersive 3D environments that refined my sense of composition, lighting, texturing, and visual storytelling.</p>
+
+  <p>As an active member of the <strong>Blender Italia Association</strong> and administrator of the <strong>Blender Italia User Group – Bergamo</strong>, I’m committed to promoting professional culture and innovation in 3D visualization.</p>
+
+  <p>I’m available for <strong>freelance collaborations</strong> and <strong>remote work</strong> — open to projects, partnerships, or commissions where design, storytelling, and technology meet.</p>
 </div>
 
 <footer>
@@ -97,4 +111,5 @@
 
 </body>
 </html>
+
 

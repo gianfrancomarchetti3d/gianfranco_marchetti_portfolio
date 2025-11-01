@@ -1,36 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact — Gianfranco Marchetti</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti - Gianfranco Marchetti</title>
+<link rel="stylesheet" href="style.css">
+<!-- Font Awesome per le icone social -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  .contact-info {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .contact-info p {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #ccc;
+  }
+
+  .contact-info a {
+    color: #00ff66;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-info a:hover {
+    color: #66ff99;
+  }
+
+  .social-icons {
+    margin-top: 25px;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin: 0 12px;
+    font-size: 2rem;
+    color: #00ff66;
+    transition: transform 0.3s, color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #66ff99;
+    transform: scale(1.2);
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="logo" href="index.html">Gianfranco Marchetti</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="container">
-    <h1>Contact</h1>
-    <p>Per collaborazioni o richieste: <a href="mailto:gianfranco.marchetti@blu.it">gianfranco.marchetti@blu.it</a></p>
-    <p>Telefono/WhatsApp: <a href="tel:+393405089942">+39 340 508 9942</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/gianfranco-marchetti-b79154263/" target="_blank" rel="noopener">linkedin</a></p>
-    <p>ArtStation: <a href="https://www.artstation.com/gianfrancomarchetti1" target="_blank" rel="noopener">artstation</a></p>
-  </main>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="about.html">About</a>
+  <a href="contatti.html">Contatti</a>
+</nav>
 
-  <footer class="site-footer">
-    <div>© <span id="year4"></span> — Contatti</div>
-  </footer>
+<section>
+  <h2>Contatti</h2>
 
-  <script>document.getElementById('year4').textContent = new Date().getFullYear();</script>
+  <div class="contact-info">
+    <p>Email: <a href="mailto:gianfranco.marchetti@blu.it">gianfranco.marchetti@blu.it</a></p>
+    <p>Cellulare: <a href="tel:+393405089942">+39 340 508 9942</a></p>
+
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/gianfranco-marchetti-b79154263/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.facebook.com/groups/24081277951460385" target="_blank" title="Facebook">
+        <i class="fab fa-facebook-square"></i>
+      </a>
+      <a href="https://www.instagram.com/iceman77754/" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  © 2025 Gianfranco Marchetti – All rights reserved
+</footer>
+
 </body>
 </html>

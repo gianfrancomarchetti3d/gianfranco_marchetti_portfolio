@@ -5,16 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gianfranco Marchetti - 3D Artist</title>
 <style>
-  /* Stile generale */
   body {
     margin: 0;
-    background-color: #000; /* sfondo nero */
-    color: #fff; /* testo bianco */
+    background-color: #000;
+    color: #fff;
     font-family: "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.7;
+    scroll-behavior: smooth;
   }
 
-  /* Menu */
   nav {
     display: flex;
     justify-content: center;
@@ -28,42 +26,97 @@
   }
 
   nav a {
-    color: #00ff66; /* verde brillante */
+    color: #00ff66;
     text-decoration: none;
     margin: 0 25px;
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s;
-    cursor: default;
   }
 
   nav a:hover {
     color: #99ffcc;
   }
 
-  /* Contenuto principale */
-  .content {
-    text-align: center;
-    padding-top: 130px; /* spazio per il menu fisso */
-    max-width: 900px;
+  section {
+    padding: 120px 20px 80px 20px; /* spazio per il menu fisso */
+    max-width: 1100px;
     margin: 0 auto;
-    padding-bottom: 100px;
+    text-align: center;
   }
 
-  h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
+  h1, h2 {
     color: #00ff66;
+    margin-bottom: 20px;
   }
+
+  h1 { font-size: 50px; }
+  h2 { font-size: 36px; margin-top: 60px; }
 
   p {
     font-size: 18px;
-    margin-bottom: 22px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #ddd;
   }
 
-  strong {
+  /* Portfolio griglia */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: #111;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0,255,100,0.3);
+  }
+
+  .item img, .item video {
+    width: 100%;
+    display: block;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
     color: #00ff66;
-    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .item:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+  }
+
+  .overlay p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
   }
 
   footer {
@@ -77,33 +130,66 @@
 </head>
 <body>
 
-<!-- Menu fisso -->
 <nav>
-  <a>Home</a>
-  <a>Portfolio</a>
-  <a>About</a>
-  <a>Contatti</a>
+  <a href="#home">Home</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#about">About</a>
+  <a href="#contatti">Contatti</a>
 </nav>
 
-<!-- Contenuto principale -->
-<div class="content">
+<!-- HOME -->
+<section id="home">
   <h1>Gianfranco Marchetti</h1>
   <p><strong>3D Consultant & Artist</strong> | Calcinate (BG), Italy</p>
+  <p>I’m a <strong>3D artist</strong> specialized in modeling, texturing, rendering, VFX, creature & character modeling, and animations using <strong>Blender</strong>.</p>
+  <p>I create realistic product visualizations, architectural renders, and detailed environments using PBR workflows and advanced lighting setups.</p>
+  <p>My goal is to deliver visually strong and technically clean 3D assets ready for games, animation, or marketing visualization.</p>
+  <p>I’ve collaborated with an international video game team, creating immersive 3D environments and refining my skills in composition, lighting, texturing, and storytelling.</p>
+  <p>Active member of Blender Italia Association and administrator of Blender Italia User Group – Bergamo, promoting professional 3D art culture.</p>
+</section>
 
-  <p>I’m a <strong>3D artist</strong> specialized in <strong>modeling, texturing, rendering, and visual effects (VFX)</strong> using <strong>Blender</strong> as my primary tool.</p>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <p>A selection of my works: architectural renders, product visualizations, creature/character modeling, VFX, and animations.</p>
+  <div class="gallery">
+    <div class="item">
+      <img src="images/render01.jpg" alt="Product render">
+      <div class="overlay">
+        <h3>Product Visualization</h3>
+        <p>Realistic materials and lighting</p>
+      </div>
+    </div>
+    <div class="item">
+      <video src="videos/animation01.mp4" autoplay muted loop></video>
+      <div class="overlay">
+        <h3>Short Animation</h3>
+        <p>3D motion and VFX</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/creature01.jpg" alt="Creature modeling">
+      <div class="overlay">
+        <h3>Creature Modeling</h3>
+        <p>High-poly sculpt, textures and rig-ready geometry</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <p>I create <strong>realistic product visualizations</strong>, <strong>architectural renders</strong>, and <strong>detailed environments</strong> using efficient <strong>PBR workflows</strong> and advanced lighting setups.</p>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p>I specialize in architectural visualization, interior/exterior rendering, and product rendering — crafting compelling visuals that tell immersive stories.</p>
+  <p>Experience includes collaboration with international video game teams, producing detailed 3D environments and assets optimized for games, animation, and marketing.</p>
+</section>
 
-  <p>My skills extend to <strong>creature and character modeling</strong>, <strong>rigging</strong>, and <strong>animation</strong>, with a focus on delivering expressive, believable, and technically optimized assets for both cinematic and real-time production.</p>
-
-  <p>My goal is to craft <strong>visually strong and technically clean 3D assets</strong> ready for <strong>games</strong>, <strong>animation</strong>, or <strong>marketing visualization</strong> — assets that combine aesthetic impact with production efficiency.</p>
-
-  <p>I’ve collaborated with an <strong>international video game development team</strong>, creating immersive 3D environments that refined my sense of composition, lighting, texturing, and visual storytelling.</p>
-
-  <p>As an active member of the <strong>Blender Italia Association</strong> and administrator of the <strong>Blender Italia User Group – Bergamo</strong>, I’m committed to promoting professional culture and innovation in 3D visualization.</p>
-
-  <p>I’m available for <strong>freelance collaborations</strong> and <strong>remote work</strong> — open to projects, partnerships, or commissions where design, storytelling, and technology meet.</p>
-</div>
+<!-- CONTATTI -->
+<section id="contatti">
+  <h2>Contatti</h2>
+  <p>Email: <a href="mailto:gianfranco.marchetti@blu.it" style="color:#00ff66;">gianfranco.marchetti@blu.it</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/gianfrancomarchetti" target="_blank" style="color:#00ff66;">linkedin.com/in/gianfrancomarchetti</a></p>
+</section>
 
 <footer>
   © 2025 Gianfranco Marchetti – All rights reserved
@@ -111,5 +197,3 @@
 
 </body>
 </html>
-
-

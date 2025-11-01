@@ -4,179 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio - Gianfranco Marchetti</title>
-<style>
-  body {
-    margin: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-  }
-
-  /* Menu */
-  nav {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    background-color: #000;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
-    border-bottom: 1px solid #111;
-  }
-
-  nav a {
-    color: #00ff66;
-    text-decoration: none;
-    margin: 0 25px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-
-  nav a:hover {
-    color: #99ffcc;
-  }
-
-  /* Contenuto principale */
-  .content {
-    padding-top: 120px;
-    text-align: center;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    font-size: 46px;
-    color: #00ff66;
-    margin-bottom: 30px;
-  }
-
-  p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 40px;
-    color: #ddd;
-  }
-
-  /* Griglia del portfolio */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 0 20px 100px 20px;
-  }
-
-  .item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    background-color: #111;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  .item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(0,255,100,0.3);
-  }
-
-  .item img, .item video {
-    width: 100%;
-    display: block;
-  }
-
-  /* Overlay testo */
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    color: #00ff66;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .item:hover .overlay {
-    opacity: 1;
-  }
-
-  .overlay h3 {
-    margin: 0 0 10px 0;
-    font-size: 20px;
-  }
-
-  .overlay p {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  footer {
-    text-align: center;
-    padding: 30px;
-    color: #666;
-    font-size: 14px;
-    border-top: 1px solid #111;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Menu -->
 <nav>
   <a href="index.html">Home</a>
   <a href="portfolio.html">Portfolio</a>
-  <a>About</a>
-  <a>Contatti</a>
+  <a href="about.html">About</a>
+  <a href="contatti.html">Contatti</a>
 </nav>
 
-<!-- Contenuto -->
-<div class="content">
-  <h1>Portfolio</h1>
-  <p>
-    A curated selection of my 3D works, including architectural renders, product visualizations, creature and character modeling, VFX, and animations.
-    Hover over each project to see details.
-  </p>
-
+<section>
+  <h2>Portfolio</h2>
+  <p>A selection of my works: architectural renders, product visualizations, creature/character modeling, VFX, and animations.</p>
   <div class="gallery">
-    <!-- ESEMPIO IMMAGINE -->
     <div class="item">
-      <img src="images/render01.jpg" alt="Product render example">
+      <img src="images/render01.jpg" alt="Product render">
       <div class="overlay">
         <h3>Product Visualization</h3>
-        <p>Realistic lighting and materials for marketing presentation.</p>
+        <p>Realistic materials and lighting</p>
       </div>
     </div>
-
-    <!-- ESEMPIO VIDEO -->
     <div class="item">
       <video src="videos/animation01.mp4" autoplay muted loop></video>
       <div class="overlay">
         <h3>Short Animation</h3>
-        <p>3D motion, VFX compositing, and dynamic lighting setup.</p>
+        <p>3D motion and VFX</p>
       </div>
     </div>
-
-    <!-- ALTRO RENDER -->
     <div class="item">
       <img src="images/creature01.jpg" alt="Creature modeling">
       <div class="overlay">
         <h3>Creature Modeling</h3>
-        <p>High-poly creature sculpt with detailed textures and rigging-ready geometry.</p>
+        <p>High-poly sculpt, textures and rig-ready geometry</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <footer>
   © 2025 Gianfranco Marchetti – All rights reserved

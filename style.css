@@ -7,6 +7,7 @@ body {
     color: #fff;
 }
 
+/* Navigazione */
 nav {
     display: flex;
     justify-content: center;
@@ -34,7 +35,7 @@ section {
     text-align: center;
 }
 
-/* Gallery griglia stabile */
+/* Griglia gallery stabile */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -45,7 +46,7 @@ section {
 /* Singolo item */
 .gallery .item {
     position: relative;
-    min-height: 250px; /* altezza minima uniforme */
+    min-height: 250px;       /* Altezza uniforme per tutte le slide */
     overflow: hidden;
     background-color: #111;
     border-radius: 10px;
@@ -57,7 +58,7 @@ section {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover; /* mantiene proporzioni senza deformare */
+    object-fit: cover;       /* Mantiene proporzioni senza deformare */
     border-radius: 10px;
 }
 
@@ -89,4 +90,9 @@ footer {
     margin-top: 50px;
 }
 
-
+/* Miglioramento visuale hover (opzionale) */
+.gallery .item:hover img,
+.gallery .item:hover video {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}

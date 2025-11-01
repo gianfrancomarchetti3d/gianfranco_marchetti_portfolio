@@ -31,6 +31,12 @@ nav a:hover {
   color: #99ffcc;
 }
 
+nav .active {
+  color: #66ff99;
+  font-weight: bold;
+  cursor: default;
+}
+
 section {
   padding: 120px 20px 80px 20px;
   max-width: 1100px;
@@ -110,6 +116,45 @@ p {
   margin: 0;
   font-size: 16px;
   line-height: 1.4;
+}
+
+/* Contatti social */
+.contact-info {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-info p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  color: #ccc;
+}
+
+.contact-info a {
+  color: #00ff66;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: #66ff99;
+}
+
+.social-icons {
+  margin-top: 25px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 12px;
+  font-size: 2rem;
+  color: #00ff66;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #66ff99;
+  transform: scale(1.2);
 }
 
 footer {

@@ -3,38 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gianfranco Marchetti - 3D Consultant</title>
+<title>Gianfranco Marchetti</title>
 <style>
+  /* Stili generali */
   body {
     margin: 0;
-    background: #000;
-    color: #fff;
+    background-color: #000; /* sfondo nero */
+    color: #fff; /* testo bianco */
     font-family: Arial, sans-serif;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
   }
 
-  #text-container {
-    position: absolute;
-    top: 20px;
-    text-align: center;
-    max-width: 800px;
-    line-height: 1.5;
+  /* Menu in alto */
+  nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+    top: 0;
     z-index: 10;
   }
 
-  canvas {
-    display: block;
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #ffcc00; /* colore al passaggio del mouse */
+  }
+
+  /* Contenuto centrale */
+  .content {
+    text-align: center;
+    padding-top: 120px; /* lascia spazio per il menu fisso */
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 20px;
+    max-width: 800px;
+    margin: 10px auto;
+    line-height: 1.6;
   }
 </style>
 </head>
 <body>
 
-<div id="text-container">
+<!-- Menu -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#about">About</a>
+  <a href="#contatti">Contatti</a>
+</nav>
+
+<!-- Contenuto principale -->
+<div class="content" id="home">
   <h1>Gianfranco Marchetti</h1>
   <p>3D Consultant | Calcinate (BG), Italy</p>
   <p>Specialized in: Architectural visualization, Interior & exterior rendering, Product rendering</p>
@@ -44,53 +77,22 @@
   <p>Excited to contribute to projects in: Game-art production, Environment creation, Product & asset rendering</p>
 </div>
 
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-<script>
-  // Scene, camera, renderer
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({antialias: true});
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+<!-- Sezioni vuote per menu -->
+<div id="portfolio" class="content">
+  <h1>Portfolio</h1>
+  <p>Qui puoi mostrare i tuoi lavori in 3D e rendering.</p>
+</div>
 
-  // Cube
-  const geometry = new THREE.BoxGeometry(2,2,2);
-  const material = new THREE.MeshStandardMaterial({color: 0xffffff});
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+<div id="about" class="content">
+  <h1>About</h1>
+  <p>Informazioni su di te e la tua esperienza professionale.</p>
+</div>
 
-  // Light
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambientLight);
-
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-  directionalLight.position.set(5,5,5);
-  scene.add(directionalLight);
-
-  camera.position.z = 5;
-
-  // Animate cube
-  function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // Handle window resize
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-</script>
+<div id="contatti" class="content">
+  <h1>Contatti</h1>
+  <p>Email: gianfranco.marchetti@blu.it</p>
+  <p>Telefono: +39 123 456 7890</p>
+</div>
 
 </body>
 </html>
-
-
-
-
-

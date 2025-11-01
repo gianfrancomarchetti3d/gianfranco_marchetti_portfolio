@@ -17,13 +17,16 @@
     justify-content: center;
     height: 100vh;
   }
+
   #text-container {
     position: absolute;
     top: 20px;
     text-align: center;
     max-width: 800px;
     line-height: 1.5;
+    z-index: 10;
   }
+
   canvas {
     display: block;
   }
@@ -41,6 +44,7 @@
   <p>Excited to contribute to projects in: Game-art production, Environment creation, Product & asset rendering</p>
 </div>
 
+<!-- Three.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 <script>
   // Scene, camera, renderer
@@ -59,13 +63,14 @@
   // Light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambientLight);
+
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
   directionalLight.position.set(5,5,5);
   scene.add(directionalLight);
 
   camera.position.z = 5;
 
-  // Animation loop
+  // Animate cube
   function animate() {
     requestAnimationFrame(animate);
     cube.rotation.x += 0.01;
@@ -74,7 +79,7 @@
   }
   animate();
 
-  // Handle resize
+  // Handle window resize
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
@@ -84,6 +89,7 @@
 
 </body>
 </html>
+
 
 
 

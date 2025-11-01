@@ -10,86 +10,80 @@
     background: #000;
     color: #fff;
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
-
-  #cube {
-    width: 100px;
-    height: 100px;
-    background: #fff;
-    transform-style: preserve-3d;
-    animation: rotateCube 10s linear infinite;
-    margin-bottom: 50px;
-  }
-
-  @keyframes rotateCube {
-    0% { transform: rotateX(0deg) rotateY(0deg); }
-    100% { transform: rotateX(360deg) rotateY(360deg); }
-  }
-
-  .text {
-    max-width: 600px;
+  #text-container {
+    position: absolute;
+    top: 20px;
     text-align: center;
+    max-width: 800px;
     line-height: 1.5;
-    animation: fadeIn 2s ease forwards;
-    opacity: 0;
   }
-
-  @keyframes fadeIn {
-    to { opacity: 1; }
+  canvas {
+    display: block;
   }
 </style>
 </head>
 <body>
 
-<div id="cube"></div>
-
-<div class="text" id="line1">
-Gianfranco Marchetti<br>3D Consultant | Calcinate (BG), Italy
+<div id="text-container">
+  <h1>Gianfranco Marchetti</h1>
+  <p>3D Consultant | Calcinate (BG), Italy</p>
+  <p>Specialized in: Architectural visualization, Interior & exterior rendering, Product rendering</p>
+  <p>Creating compelling visuals that tell emotional and immersive stories</p>
+  <p>Experience: Collaborated with international video game team, Designed highly detailed 3D environments, Skilled in composition, lighting, texturing, visual storytelling</p>
+  <p>Community & Professional Involvement: Blender Italia Association member, Administrator of Blender Italia User Group, Bergamo, Promoting professional 3D art and visualization</p>
+  <p>Excited to contribute to projects in: Game-art production, Environment creation, Product & asset rendering</p>
 </div>
 
-<div class="text" id="line2" style="display:none;">
-Specialized in:<br>- Architectural visualization<br>- Interior & exterior rendering<br>- Product rendering
-</div>
-
-<div class="text" id="line3" style="display:none;">
-Creating compelling visuals that tell emotional and immersive stories
-</div>
-
-<div class="text" id="line4" style="display:none;">
-Experience:<br>- Collaborated with international video game team<br>- Designed highly detailed 3D environments<br>- Skilled in composition, lighting, texturing, visual storytelling
-</div>
-
-<div class="text" id="line5" style="display:none;">
-Community & Professional Involvement:<br>- Blender Italia Association member<br>- Administrator of Blender Italia User Group, Bergamo<br>- Promoting professional 3D art and visualization
-</div>
-
-<div class="text" id="line6" style="display:none;">
-Excited to contribute to projects in:<br>- Game-art production<br>- Environment creation<br>- Product & asset rendering
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
 <script>
-  const lines = ["line1","line2","line3","line4","line5","line6"];
-  let index = 0;
+  // Scene, camera, renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
 
-  function showNextLine() {
-    if(index > 0) document.getElementById(lines[index-1]).style.display = "none";
-    if(index < lines.length) {
-      document.getElementById(lines[index]).style.display = "block";
-      index++;
-      setTimeout(showNextLine, 4000); // 4 secondi per linea
-    }
+  // Cube
+  const geometry = new THREE.BoxGeometry(2,2,2);
+  const material = new THREE.MeshStandardMaterial({color: 0xffffff});
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  // Light
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5,5,5);
+  scene.add(directionalLight);
+
+  camera.position.z = 5;
+
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
   }
+  animate();
 
-  showNextLine();
+  // Handle resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
 </script>
 
 </body>
 </html>
+
 
 

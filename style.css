@@ -1,19 +1,19 @@
-/* === Impostazioni generali e sfondo === */
+/* ===================== Sfondo principale ===================== */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('images/sfondo.png'); /* Percorso della tua immagine */
-    background-size: cover;       /* L’immagine copre tutto lo schermo */
+    background-image: url('images/sfondo.png'); /* Percorso della tua immagine PNG */
+    background-size: cover;       /* Copre tutto lo schermo */
     background-position: center;  /* Centra l’immagine */
     background-repeat: no-repeat; /* Non ripete l’immagine */
     background-attachment: fixed; /* Resta ferma durante lo scroll */
-    color: #fff;
+    color: #fff;                  /* Colore testo leggibile */
     position: relative;
     z-index: 0;
 }
 
-/* Overlay semi-trasparente per leggibilità del testo */
+/* Overlay semi-trasparente per migliorare leggibilità */
 body::before {
     content: "";
     position: fixed;
@@ -21,20 +21,19 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.55); /* Leggermente più scuro per contrasto */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
 
-/* === Contenitore principale per centratura === */
+/* ===================== Contenitore principale ===================== */
 .container {
-    max-width: 1000px;      /* Larghezza massima */
-    margin: 0 auto;         /* Centra il contenuto orizzontalmente */
-    padding: 40px 20px;     /* Spazio interno */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
     box-sizing: border-box;
-    text-align: center;     /* Centra il testo */
 }
 
-/* === Menu di navigazione === */
+/* ===================== Menu di navigazione ===================== */
 nav {
     display: flex;
     justify-content: center;
@@ -58,17 +57,20 @@ nav span.active {
     color: #ffd700; /* Giallo oro per evidenziare */
 }
 
-/* === Sezione principale === */
+/* ===================== Sezioni principali ===================== */
 section {
-    background-color: rgba(0, 0, 0, 0.4); /* Leggera trasparenza per contrasto */
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 12px;
     padding: 40px;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+    text-align: center;
 }
 
-section h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+section h1,
+section h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
 }
 
 section p {
@@ -76,10 +78,59 @@ section p {
     font-size: 18px;
 }
 
-/* === Footer === */
+/* ===================== Footer ===================== */
 footer {
     margin-top: 60px;
     text-align: center;
     font-size: 14px;
     color: #ccc;
 }
+
+/* ===================== Griglia Portfolio ===================== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.item {
+    position: relative;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.item img,
+.item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Overlay descrizione immagini/video */
+.overlay {
+    padding: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.overlay h3 {
+    margin: 5px 0 3px 0;
+    font-size: 16px;
+}
+
+.overlay p {
+    font-size: 14px;
+    margin: 0;
+}
+

@@ -4,16 +4,16 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-image: url('images/sfondo.png'); /* Percorso della tua immagine PNG */
-    background-size: cover;       /* Copre tutto lo schermo */
-    background-position: center;  /* Centra l’immagine */
-    background-repeat: no-repeat; /* Non ripete l’immagine */
-    background-attachment: fixed; /* Resta ferma durante lo scroll */
-    color: #fff;                  /* Colore testo leggibile */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
     position: relative;
     z-index: 0;
 }
 
-/* Overlay semi-trasparente per migliorare leggibilità */
+/* Overlay semi-trasparente per leggibilità */
 body::before {
     content: "";
     position: fixed;
@@ -54,7 +54,7 @@ nav span {
 
 nav a:hover,
 nav span.active {
-    color: #ffd700; /* Giallo oro per evidenziare */
+    color: #ffd700;
 }
 
 /* ===================== Sezioni principali ===================== */
@@ -95,10 +95,13 @@ footer {
 }
 
 .item {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     background-color: rgba(0,0,0,0.3);
     border-radius: 10px;
-    overflow: hidden;
+    padding: 10px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -108,29 +111,35 @@ footer {
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
+/* Immagini e video ridimensionati e contornati */
 .item img,
 .item video {
     width: 100%;
+    max-width: 300px;   /* limita dimensione massima */
     height: auto;
+    margin: 0 auto;
     display: block;
     border-radius: 8px;
+    border: 3px solid #4CAF50; /* bordo verde elegante */
 }
 
-/* Overlay descrizione immagini/video */
+/* Overlay con descrizione */
 .overlay {
     padding: 10px;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
+    border-radius: 0 0 8px 8px;
 }
 
 .overlay h3 {
     margin: 5px 0 3px 0;
     font-size: 16px;
+    color: #ffffff;
 }
 
 .overlay p {
     font-size: 14px;
     margin: 0;
+    color: #e0e0e0;
 }
-

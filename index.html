@@ -5,10 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gianfranco Marchetti - Home</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- Three.js e OrbitControls compatibili GitHub Pages -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.163.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    /* Stile semplice per la sezione immagine */
+    .animation {
+      width: 100%;
+      max-width: 600px; /* media grandezza */
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .animation img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,59 +44,14 @@
   <p>For project inquiries, partnerships, or customized requests, feel free to contact me directly through the “Contact” section.</p>
 </section>
 
-<!-- 3D Animation / PNG Sfera Rotante -->
+<!-- Sfera statica -->
 <section class="animation">
-  <div id="sphere-container" style="width: 100%; max-width: 700px; height: 450px; margin: 40px auto;"></div>
+  <img src="image/sfera.png" alt="Sfera 3D">
 </section>
 
 <footer>
   © 2025 Gianfranco Marchetti – All rights reserved
 </footer>
 
-<script>
-  const container = document.getElementById('sphere-container');
-
-  // Scena e camera
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-  camera.position.z = 5;
-
-  // Renderer
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  container.appendChild(renderer.domElement);
-
-  // Controlli interattivi
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.05;
-  controls.enablePan = false;
-  controls.minDistance = 2;
-  controls.maxDistance = 10;
-
-  // Sfera con PNG
-  const texture = new THREE.TextureLoader().load('image/sfera.png'); // <-- PNG nella cartella image/
-  const geometry = new THREE.PlaneGeometry(3, 3);
-  const sphere = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texture, transparent: true }));
-  scene.add(sphere);
-
-  // Animazione
-  function animate() {
-    requestAnimationFrame(animate);
-    sphere.rotation.y += 0.01; // rotazione automatica
-    controls.update();
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // Resize dinamico
-  window.addEventListener('resize', () => {
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
-  });
-</script>
-
 </body>
 </html>
-

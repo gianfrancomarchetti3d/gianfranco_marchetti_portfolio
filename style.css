@@ -1,3 +1,4 @@
+/* === Impostazioni generali e sfondo === */
 body {
     margin: 0;
     padding: 0;
@@ -7,10 +8,12 @@ body {
     background-position: center;  /* Centra l’immagine */
     background-repeat: no-repeat; /* Non ripete l’immagine */
     background-attachment: fixed; /* Resta ferma durante lo scroll */
-    color: #fff;                  /* Colore testo leggibile sull’immagine */
+    color: #fff;
+    position: relative;
+    z-index: 0;
 }
 
-/* Overlay semi-trasparente per migliorare leggibilità */
+/* Overlay semi-trasparente per leggibilità del testo */
 body::before {
     content: "";
     position: fixed;
@@ -18,6 +21,65 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Nero semi-trasparente */
-    z-index: -1; /* Sta dietro tutti gli elementi della pagina */
+    background-color: rgba(0, 0, 0, 0.55); /* Leggermente più scuro per contrasto */
+    z-index: -1;
+}
+
+/* === Contenitore principale per centratura === */
+.container {
+    max-width: 1000px;      /* Larghezza massima */
+    margin: 0 auto;         /* Centra il contenuto orizzontalmente */
+    padding: 40px 20px;     /* Spazio interno */
+    box-sizing: border-box;
+    text-align: center;     /* Centra il testo */
+}
+
+/* === Menu di navigazione === */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+nav a,
+nav span {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav a:hover,
+nav span.active {
+    color: #ffd700; /* Giallo oro per evidenziare */
+}
+
+/* === Sezione principale === */
+section {
+    background-color: rgba(0, 0, 0, 0.4); /* Leggera trasparenza per contrasto */
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+section h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+section p {
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+/* === Footer === */
+footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
 }

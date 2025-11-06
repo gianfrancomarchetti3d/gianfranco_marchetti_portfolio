@@ -158,83 +158,11 @@ footer {
   .hero-image img, .about-section img {
     max-width: 60%;
   }
-/* ========================
-   Contatti - Testo e Social
-======================== */
-.contact-info {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.contact-info p {
-  font-size: 1.6rem;  /* più grande */
-  font-weight: bold;        /* grassetto */
-  color: #000000;           /* nero */
-  margin: 5px 0;
-}
-
-.contact-info a {
-  color: #000000;           /* link nero */
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.contact-info a:hover {
-  color: #00ff00;           /* colore al passaggio del mouse */
 }
 
 /* ========================
-   Social Icons - ingrandite
+   Contatti - Testo, Immagine e Social
 ======================== */
-.social-icons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;   /* più largo */
-  height: 70px;  /* più alto */
-  background-color: rgba(0, 128, 0, 0.5);
-  border-radius: 15px;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-   .social-icons a i {
-  font-size: 2.5rem; /* aumenta la dimensione dell'icona */
-  color: #fff;
-}
-
-.social-icons a:hover {
-  transform: scale(1.2); /* effetto ingrandimento */
-  background-color: #00ff00; /* cambia colore riquadro */
-}
-
-.social-icons a:hover i {
-  color: #000; /* colore icona al passaggio del mouse */
-}
-
-/* Mobile */
-@media(max-width:768px){
-  .social-icons a {
-    width: 60px;
-    height: 60px;
-  }
-
-  .social-icons a i {
-    font-size: 2rem;
-  }
-
-.social-icons a:hover {
-  transform: scale(1.2);
-  background-color: #00ff00;
-}
-
-.social-icons a:hover i {
-  color: #000;
-}
-
-/* Contatti con immagine */
 .contact-wrapper {
   display: flex;
   flex-direction: row;
@@ -245,14 +173,75 @@ footer {
 }
 
 .contact-wrapper img {
-  width: 50px; /* dimensione immagine */
-  height: 50px;
+  width: 100px; /* dimensione immagine desktop */
+  height: 100px;
   border-radius: 15px;
   object-fit: cover;
   border: 3px solid #00ff00;
 }
 
-/* Mobile */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-info p {
+  font-size: 1.6rem;  /* più grande */
+  font-weight: bold;   /* grassetto */
+  color: #000000;      /* nero */
+  margin: 5px 0;
+}
+
+.contact-info a {
+  color: #000000;      /* link nero */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: #00ff00;      /* hover verde */
+}
+
+/* ========================
+   Social Icons - grandi
+======================== */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;    /* larghezza desktop */
+  height: 80px;   /* altezza desktop */
+  background-color: rgba(0, 128, 0, 0.5);
+  border-radius: 15px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icons a i {
+  font-size: 3rem; /* dimensione icone desktop */
+  color: #fff;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  background-color: #00ff00;
+}
+
+.social-icons a:hover i {
+  color: #000;
+}
+
+/* ========================
+   Responsive Contatti
+======================== */
 @media(max-width:768px){
   .contact-wrapper {
     flex-direction: column;
@@ -265,16 +254,17 @@ footer {
   }
 
   .social-icons a {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   .social-icons a i {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .contact-info p {
     font-size: 1.2rem;
   }
 }
+
 

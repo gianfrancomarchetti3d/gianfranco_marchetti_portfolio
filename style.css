@@ -227,13 +227,14 @@ footer {
    Immagine contatti sotto le icone
 ======================== */
 .contact-image {
-  margin-top: 30px;
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .contact-image img {
-  width: 150px;  /* desktop */
+  display: block;        /* assicura che sia visibile */
+  width: 150px;          /* dimensione desktop */
   height: 150px;
   border-radius: 15px;
   object-fit: cover;

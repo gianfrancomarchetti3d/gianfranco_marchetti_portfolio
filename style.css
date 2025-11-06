@@ -1,7 +1,81 @@
-/* Portfolio Grid */
+/* ========================
+   Reset e base
+======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica', Arial, sans-serif;
+  background-image: url("images/viaggio.png"); /* sfondo unico per tutte le pagine */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* ========================
+   Nav
+======================== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 0;
+  background-color: rgba(0,0,0,0.6);
+}
+
+nav a, nav span.active {
+  color: #00ff00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav span.active {
+  text-decoration: underline;
+}
+
+/* ========================
+   Riquadro introduttivo (.intro-box)
+======================== */
+.intro-box {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  border: 3px solid #00ff00;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ========================
+   Hero Image (solo Home)
+======================== */
+.hero-image img {
+  max-width: 85%; /* leggermente più grande */
+  height: auto;
+  margin: 30px auto;
+  display: block;
+  border-radius: 15px;
+}
+
+/* ========================
+   Portfolio Grid
+======================== */
+.portfolio-section {
+  padding: 30px 15px;
+}
+
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* più spazio */
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -13,10 +87,10 @@
 }
 
 .portfolio-box {
-  background-color: rgba(0, 128, 0, 0.5);  /riquadro verde* */
+  background-color: rgba(0, 128, 0, 0.5); /* riquadro verde più trasparente */
   border-radius: 12px;
-  padding: 20px; 
-  max-width: 240px; 
+  padding: 20px; /* più spazio interno */
+  max-width: 240px; /* leggermente più grande */
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
@@ -26,17 +100,17 @@
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  margin-bottom: 12px; 
+  margin-bottom: 12px; /* più respiro sotto l'immagine */
 }
 
 .portfolio-box h3 {
-  font-size: 1.1rem; 
+  font-size: 1.15rem; /* leggermente più grande */
   margin: 5px 0;
   color: #fff;
 }
 
 .portfolio-box p {
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* leggermente più grande */
   color: #fff;
 }
 
@@ -44,11 +118,12 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
+
 /* ========================
    About Section
 ======================== */
 .about-section img {
-  max-width: 70%;
+  max-width: 75%; /* leggermente più grande */
   height: auto;
   margin: 20px auto;
   display: block;
@@ -84,3 +159,4 @@ footer {
     max-width: 90%;
   }
 }
+

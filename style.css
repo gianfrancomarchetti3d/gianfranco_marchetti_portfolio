@@ -1,137 +1,159 @@
-/* ===== SFONDO E STRUTTURA GENERALE ===== */
+/* --------------------------
+   Stile generale del sito
+--------------------------- */
 body {
-  background: url("images/viaggio.png") no-repeat center center fixed;
-  background-size: cover;
+  font-family: 'Helvetica', 'Arial', sans-serif;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
 }
 
-/* ===== NAVBAR ===== */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 25px;
-}
-
-nav a,
-nav span {
+a {
   text-decoration: none;
-  color: white;
-  font-size: 19px;
-  transition: 0.3s;
+  color: #333;
 }
 
-nav .active {
-  color: #00ff66;
+nav {
+  background-color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-nav a:hover {
-  color: #00ff66;
-  text-shadow: 0 0 10px #00ff66;
+nav a, nav span.active {
+  font-weight: bold;
 }
 
-/* ===== INTRO BOX ===== */
+nav span.active {
+  color: #0077cc;
+}
+
+/* --------------------------
+   Intro box (riquadro colorato)
+--------------------------- */
 .intro-box {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 35px;
-  border: 3px solid #00ff66;
-  border-radius: 18px;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(8px);
-  animation: neonGlow 3s infinite alternate ease-in-out;
+  background-color: #0077cc;  /* colore blu intenso */
+  color: #fff;
+  padding: 40px 30px;
+  margin: 30px auto;
+  border-radius: 15px;
+  max-width: 1200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .intro-box h1 {
-  margin: 0;
-  color: #00ff66;
-  font-size: 40px;
+  margin: 0 0 10px;
+  font-size: 2.5rem;
 }
 
 .intro-box h2 {
-  color: #caffdb;
-  margin-bottom: 20px;
-  font-size: 22px;
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 
 .intro-box p {
-  font-size: 16px;
-  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 1rem;
 }
 
-/* Glow animato */
-@keyframes neonGlow {
-  from { box-shadow: 0 0 12px #00ff66; }
-  to { box-shadow: 0 0 28px #00ff66; }
-}
-
-/* ===== IMMAGINE TREX ===== */
-.hero-image {
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto;
-}
-
-.hero-image img {
-  width: 100%;
-  border-radius: 18px;
-}
-
-/* ===== PORTFOLIO ===== */
-.portfolio-section {
-  max-width: 1200px;
-  margin: 50px auto;
-  text-align: center;
-}
-
-.portfolio-intro {
-  max-width: 800px;
-  margin: auto;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
+/* --------------------------
+   Portfolio grid
+--------------------------- */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 15px;
 }
 
 .portfolio-card {
-  background: rgba(0,0,0,0.55);
-  border: 2px solid #00ff66;
-  border-radius: 15px;
-  padding: 18px;
-  transition: 0.3s;
-}
-
-.portfolio-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 22px #00ff66;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-card img {
   width: 100%;
-  border-radius: 12px;
+  height: auto;
+  display: block;
 }
 
 .portfolio-card h3 {
-  color: #00ff66;
-  margin-top: 12px;
-  font-size: 20px;
+  margin: 15px;
+  font-size: 1.25rem;
 }
 
 .portfolio-card p {
-  font-size: 15px;
-  color: #d7ffe5;
+  margin: 0 15px 15px;
+  font-size: 0.95rem;
+  color: #555;
 }
 
-/* ===== FOOTER ===== */
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* --------------------------
+   About image
+--------------------------- */
+.about-image {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* --------------------------
+   Footer
+--------------------------- */
 footer {
   text-align: center;
-  padding: 40px 0;
-  color: #00ff66;
+  padding: 20px;
+  background-color: #fff;
+  color: #555;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+}
+
+/* --------------------------
+   Responsive tweaks
+--------------------------- */
+@media (max-width: 768px) {
+  .intro-box {
+    padding: 30px 20px;
+  }
+
+  .intro-box h1 {
+    font-size: 2rem;
+  }
+
+  .intro-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .portfolio-grid {
+    gap: 20px;
+  }
 }

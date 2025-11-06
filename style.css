@@ -228,8 +228,8 @@ footer {
 }
 
 .contact-wrapper img {
-  width: 150px; /* dimensione immagine */
-  height: 150px;
+  width: 50px; /* dimensione immagine */
+  height: 50px;
   border-radius: 15px;
   object-fit: cover;
   border: 3px solid #00ff00;

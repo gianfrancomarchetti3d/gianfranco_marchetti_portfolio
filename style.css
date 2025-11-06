@@ -5,7 +5,14 @@ body {
   font-family: 'Helvetica', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+
+  /* Sfondo globale su tutte le pagine */
+  background-image: url("images/sfondo.png");
+  background-size: cover;       /* riempie tutto lo schermo */
+  background-position: center;  /* centra l'immagine */
+  background-attachment: fixed; /* effetto paralax */
+  background-repeat: no-repeat; /* evita ripetizioni */
+
   color: #333;
   line-height: 1.6;
 }
@@ -16,7 +23,7 @@ a {
 }
 
 nav {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95); /* leggermente trasparente per vedere lo sfondo */
   padding: 15px 30px;
   display: flex;
   gap: 20px;
@@ -130,7 +137,7 @@ nav span.active {
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95); /* leggermente trasparente per vedere lo sfondo */
   color: #555;
   margin-top: 40px;
   font-size: 0.9rem;
@@ -157,3 +164,4 @@ footer {
     gap: 20px;
   }
 }
+

@@ -75,7 +75,7 @@ nav span.active {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* più spazio */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* più spazio */
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -90,7 +90,7 @@ nav span.active {
   background-color: rgba(0, 128, 0, 0.5); /* riquadro verde più trasparente */
   border-radius: 12px;
   padding: 30px; /* più spazio interno */
-  max-width: 300px; /* leggermente più grande */
+  max-width: 400px; /* leggermente più grande */
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;

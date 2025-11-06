@@ -1,5 +1,33 @@
-/* —— BOX PRESENTAZIONE —— */
+/* === SFONDO GENERALE DEL SITO === */
+body {
+  background: url("images/viaggio.png") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
 
+/* === MENU === */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+nav a, nav span {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav .active {
+  font-weight: bold;
+  color: #00ff66;
+}
+
+/* === RIQUADRO VERDE (PRESENTAZIONE) === */
 .intro-box {
   max-width: 900px;
   margin: 40px auto;
@@ -8,11 +36,9 @@
   border-radius: 18px;
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
-  color: white;
   animation: neonGlow 3s infinite alternate ease-in-out;
 }
 
-/* TITOLO E SOTTOTITOLO */
 .intro-box h1 {
   margin-top: 0;
   font-size: 38px;
@@ -30,7 +56,7 @@
   font-size: 16px;
 }
 
-/* —— EFFETTO GLOW ATTORNO AL BOX —— */
+/* Effetto glow animato */
 @keyframes neonGlow {
   from {
     box-shadow: 0 0 8px #00ff66, 0 0 15px #00ff66;
@@ -40,18 +66,24 @@
   }
 }
 
-/* —— IMMAGINE SFERA —— */
-.animation {
+/* === IMMAGINE T-REX === */
+.trex-image {
   width: 100%;
-  max-width: 600px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 50px auto;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.animation img {
-  max-width: 100%;
-  height: auto;
+.trex-image img {
+  width: 100%;
   display: block;
+  border-radius: 12px;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  color: #00ff66;
+  padding: 50px 0;
 }

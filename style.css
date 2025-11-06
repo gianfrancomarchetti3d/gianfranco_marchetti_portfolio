@@ -1,89 +1,61 @@
-/* === SFONDO GENERALE DEL SITO === */
-body {
-  background: url("images/viaggio.png") no-repeat center center fixed;
-  background-size: cover;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-}
+/* ===== PORTFOLIO PAGE ===== */
 
-/* === MENU === */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.portfolio-section {
+  max-width: 1300px;
+  margin: 60px auto;
   padding: 20px;
+  color: white;
+  text-align: center;
 }
 
-nav a, nav span {
-  color: white;
-  text-decoration: none;
+.portfolio-section h2 {
+  color: #00ff66;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.portfolio-intro {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
   font-size: 18px;
 }
 
-nav .active {
-  font-weight: bold;
-  color: #00ff66;
+/* GRIGLIA IMMAGINI */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
 }
 
-/* === RIQUADRO VERDE (PRESENTAZIONE) === */
-.intro-box {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 35px;
-  border: 3px solid #00ff66;
-  border-radius: 18px;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(8px);
-  animation: neonGlow 3s infinite alternate ease-in-out;
-}
-
-.intro-box h1 {
-  margin-top: 0;
-  font-size: 38px;
-  color: #00ff66;
-}
-
-.intro-box h2 {
-  font-size: 20px;
-  margin-bottom: 22px;
-  color: #d9ffdf;
-}
-
-.intro-box p {
-  line-height: 1.6;
-  font-size: 16px;
-}
-
-/* Effetto glow animato */
-@keyframes neonGlow {
-  from {
-    box-shadow: 0 0 8px #00ff66, 0 0 15px #00ff66;
-  }
-  to {
-    box-shadow: 0 0 15px #00ff66, 0 0 35px #00ff66;
-  }
-}
-
-/* === IMMAGINE T-REX === */
-.trex-image {
-  width: 100%;
-  max-width: 900px;
-  margin: 50px auto;
-  display: flex;
-  justify-content: center;
-}
-
-.trex-image img {
-  width: 100%;
-  display: block;
+/* CARD SINGOLA */
+.portfolio-card {
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid #00ff66;
   border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
 }
 
-/* === FOOTER === */
-footer {
-  text-align: center;
+.portfolio-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 20px #00ff66;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.portfolio-card h3 {
+  margin: 12px 0 5px;
+  font-size: 20px;
   color: #00ff66;
-  padding: 50px 0;
+}
+
+.portfolio-card p {
+  font-size: 15px;
+  color: #d8ffe0;
 }

@@ -1,84 +1,66 @@
-/* --------------------------
-   Stile generale del sito
---------------------------- */
+/* Stile generale */
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  height: 100%;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 body {
-  font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 1.6;
-  color: #333;
-
-  /* Sfondo globale */
+  color: #fff; /* testo chiaro sullo sfondo */
   background-image: url("images/viaggio.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   background-attachment: fixed;
-
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* --------------------------
-   Nav
---------------------------- */
+/* Nav */
 nav {
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 15px 0;
-  background-color: rgba(255,255,255,0.9);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: rgba(0,0,0,0.6);
 }
 
 nav a, nav span.active {
+  color: #00ff00; /* verde attorno alle scritte */
   font-weight: bold;
-  color: #333;
 }
 
-nav span.active {
-  color: #0077cc;
-}
-
-/* --------------------------
-   Intro box (riquadro colorato)
---------------------------- */
+/* Intro box / riquadro centrale */
 .intro-box {
-  background-color: #0077cc;
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6); /* trasparente sullo sfondo */
   padding: 40px 30px;
-  border-radius: 15px;
   max-width: 1000px;
-  margin: 30px auto; /* centra il box */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  text-align: center; /* centra testo */
+  margin: 50px auto;
+  border: 3px solid #00ff00; /* bordo verde */
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.intro-box h1 {
-  margin-bottom: 10px;
-  font-size: 2.5rem;
+.intro-box h1, .intro-box h2, .intro-box p {
+  margin: 15px 0;
 }
 
-.intro-box h2 {
-  margin-bottom: 20px;
-  font-weight: normal;
-  font-size: 1.5rem;
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  background-color: rgba(0,0,0,0.6);
+  color: #00ff00;
+  font-size: 0.9rem;
 }
 
-.intro-box p {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-/* --------------------------
-   Portfolio grid
---------------------------- */
+/* Portfolio grid */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -89,38 +71,14 @@ nav span.active {
 }
 
 .portfolio-card {
-  background-color: rgba(255,255,255,0.95);
+  background-color: rgba(0,0,0,0.7);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
-.portfolio-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.portfolio-card h3 {
-  margin: 15px;
-  font-size: 1.25rem;
-}
-
-.portfolio-card p {
-  margin: 0 15px 15px;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-.portfolio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* --------------------------
-   About image
---------------------------- */
+/* About image */
 .about-image {
   display: flex;
   justify-content: center;
@@ -128,52 +86,26 @@ nav span.active {
 }
 
 .about-image img {
-  max-width: 80%; /* dimensione media */
+  max-width: 80%;
   height: auto;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-image img:hover {
   transform: scale(1.03);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-/* --------------------------
-   Footer
---------------------------- */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: auto; /* spinge il footer in basso se poco contenuto */
-  background-color: rgba(255,255,255,0.9);
-  color: #555;
-  font-size: 0.9rem;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
-}
-
-/* --------------------------
-   Responsive tweaks
---------------------------- */
-@media (max-width: 768px) {
+/* Responsive */
+@media(max-width:768px){
   .intro-box {
     padding: 30px 20px;
+    margin: 30px auto;
   }
-
-  .intro-box h1 {
-    font-size: 2rem;
-  }
-
-  .intro-box h2 {
-    font-size: 1.2rem;
-  }
-
-  .portfolio-grid {
-    gap: 20px;
-  }
-
   .about-image img {
     max-width: 95%;
   }
 }
+

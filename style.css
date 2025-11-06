@@ -1,84 +1,55 @@
-/* Sfondo globale */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Helvetica', Arial, sans-serif;
-  background-image: url("images/viaggio.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  color: #fff;
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 15px;
 }
 
-/* Nav */
-nav {
+/* Singola card */
+.portfolio-card {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  padding: 15px 0;
-  background-color: rgba(0,0,0,0.6);
 }
 
-nav a, nav span.active {
-  color: #00ff00;
-  font-weight: bold;
-}
-
-/* Riquadro introduttivo */
-.intro-box {
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 40px 30px;
+.portfolio-box {
+  background-color: rgba(0, 128, 0, 0.7); /* riquadro verde */
+  border-radius: 12px;
+  padding: 15px;
+  max-width: 220px;  /* limita larghezza */
   text-align: center;
-  border: 3px solid #00ff00; /* bordo verde */
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.6); /* trasparente sullo sfondo */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* Hero image */
-.hero-image {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-.hero-image img {
-  max-width: 60%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
 }
 
-.hero-image img:hover {
-  transform: scale(1.03);
+.portfolio-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: auto;
-  background-color: rgba(0,0,0,0.6);
-  color: #00ff00;
+.portfolio-box h3 {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.portfolio-box p {
   font-size: 0.9rem;
+  color: #fff;
+}
+
+.portfolio-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .intro-box {
-    padding: 30px 20px;
-    margin: 30px auto;
-  }
-  
-  .hero-image img {
+@media(max-width:768px){
+  .portfolio-box {
     max-width: 90%;
   }
 }
-
-

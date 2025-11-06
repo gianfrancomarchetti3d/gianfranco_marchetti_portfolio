@@ -59,7 +59,7 @@ nav span.active {
    Hero Image (solo Home)
 ======================== */
 .hero-image img {
-  max-width: 85%; /* leggermente più grande */
+  max-width: 70%; /* leggermente più grande */
   height: auto;
   margin: 30px auto;
   display: block;
@@ -89,7 +89,7 @@ nav span.active {
 .portfolio-box {
   background-color: rgba(0, 128, 0, 0.5); /* riquadro verde più trasparente */
   border-radius: 12px;
-  padding: 25px; /* più spazio interno */
+  padding: 30px; /* più spazio interno */
   max-width: 300px; /* leggermente più grande */
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);

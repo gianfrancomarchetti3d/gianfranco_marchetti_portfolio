@@ -59,7 +59,7 @@ nav span.active {
    Hero Image (solo Home)
 ======================== */
 .hero-image img {
-  max-width: 70%; /* leggermente più grande */
+  max-width: 70%;
   height: auto;
   margin: 30px auto;
   display: block;
@@ -75,7 +75,7 @@ nav span.active {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* più spazio */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
@@ -87,10 +87,10 @@ nav span.active {
 }
 
 .portfolio-box {
-  background-color: rgba(0, 128, 0, 0.5); /* riquadro verde più trasparente */
+  background-color: rgba(0, 128, 0, 0.5);
   border-radius: 12px;
-  padding: 30px; /* più spazio interno */
-  max-width: 400px; /* leggermente più grande */
+  padding: 30px;
+  max-width: 400px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
@@ -100,17 +100,17 @@ nav span.active {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  margin-bottom: 12px; /* più respiro sotto l'immagine */
+  margin-bottom: 12px;
 }
 
 .portfolio-box h3 {
-  font-size: 1.2rem; /* leggermente più grande */
+  font-size: 1.2rem;
   margin: 5px 0;
   color: #fff;
 }
 
 .portfolio-box p {
-  font-size: 1rem; /* leggermente più grande */
+  font-size: 1rem;
   color: #fff;
 }
 
@@ -123,7 +123,7 @@ nav span.active {
    About Section
 ======================== */
 .about-section img {
-  max-width: 40%; /* leggermente più grande */
+  max-width: 40%;
   height: auto;
   margin: 20px auto;
   display: block;
@@ -163,28 +163,12 @@ footer {
 /* ========================
    Contatti - Testo, Immagine e Social
 ======================== */
-.contact-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.contact-wrapper img {
-  width: 150px;  /* dimensione desktop maggiore */
-  height: 150px;
-  border-radius: 15px;
-  object-fit: cover;
-  border: 3px solid #00ff00;
-}
-
 .contact-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  margin-top: 30px;
 }
 
 .contact-info p {
@@ -218,15 +202,15 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;    /* larghezza desktop */
-  height: 80px;   /* altezza desktop */
+  width: 80px;
+  height: 80px;
   background-color: rgba(0, 128, 0, 0.5);
   border-radius: 15px;
   transition: transform 0.3s, background-color 0.3s;
 }
 
 .social-icons a i {
-  font-size: 3rem; /* dimensione icone desktop */
+  font-size: 3rem;
   color: #fff;
 }
 
@@ -240,17 +224,28 @@ footer {
 }
 
 /* ========================
+   Immagine contatti sotto le icone
+======================== */
+.contact-image {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-image img {
+  width: 150px;  /* desktop */
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  border: 3px solid #00ff00;
+}
+
+/* ========================
    Responsive Contatti
 ======================== */
 @media(max-width:768px){
-  .contact-wrapper {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .contact-wrapper img {
-    width: 120px;
-    height: 120px;
+  .contact-info p {
+    font-size: 1.2rem;
   }
 
   .social-icons a {
@@ -262,10 +257,8 @@ footer {
     font-size: 2rem;
   }
 
-  .contact-info p {
-    font-size: 1.2rem;
+  .contact-image img {
+    width: 120px;
+    height: 120px;
   }
 }
-
-
-

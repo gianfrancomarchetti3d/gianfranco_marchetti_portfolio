@@ -170,43 +170,60 @@ footer {
 }
 
 .contact-info p {
-  font-size: 1.4rem; /* più leggibile */
+  font-size: 1.6rem;  /* più grande */
+  font-weight: bold;        /* grassetto */
+  color: #000000;           /* nero */
   margin: 5px 0;
 }
 
 .contact-info a {
-  color: #00ff00; /* mantiene lo stile del sito */
+  color: #000000;           /* link nero */
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .contact-info a:hover {
-  color: #fff; /* cambia colore al passaggio del mouse */
+  color: #00ff00;           /* colore al passaggio del mouse */
 }
 
-/* Social Icons */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
-}
-
+/* ========================
+   Social Icons - ingrandite
+======================== */
 .social-icons a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 70px;   /* più largo */
+  height: 70px;  /* più alto */
   background-color: rgba(0, 128, 0, 0.5);
   border-radius: 15px;
   transition: transform 0.3s, background-color 0.3s;
 }
 
-.social-icons a i {
-  font-size: 2rem;
+   .social-icons a i {
+  font-size: 2.5rem; /* aumenta la dimensione dell'icona */
   color: #fff;
 }
+
+.social-icons a:hover {
+  transform: scale(1.2); /* effetto ingrandimento */
+  background-color: #00ff00; /* cambia colore riquadro */
+}
+
+.social-icons a:hover i {
+  color: #000; /* colore icona al passaggio del mouse */
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .social-icons a {
+    width: 60px;
+    height: 60px;
+  }
+
+  .social-icons a i {
+    font-size: 2rem;
+  }
 
 .social-icons a:hover {
   transform: scale(1.2);

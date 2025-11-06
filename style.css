@@ -1,37 +1,45 @@
 /* --------------------------
    Stile generale del sito
 --------------------------- */
-body {
-  font-family: 'Helvetica', 'Arial', sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
+}
 
-  /* Sfondo globale su tutte le pagine */
-  background-image: url("images/sfondo.png");
-  background-size: cover;       /* riempie tutto lo schermo */
-  background-position: center;  /* centra l'immagine */
-  background-attachment: fixed; /* effetto paralax */
-  background-repeat: no-repeat; /* evita ripetizioni */
-
-  color: #333;
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
   line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
   color: #333;
+
+  /* Sfondo globale */
+  background-image: url("images/sfondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* --------------------------
+   Nav
+--------------------------- */
 nav {
-  background-color: rgba(255, 255, 255, 0.95); /* leggermente trasparente per vedere lo sfondo */
-  padding: 15px 30px;
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 20px;
+  padding: 15px 0;
+  background-color: rgba(255,255,255,0.9);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 nav a, nav span.active {
   font-weight: bold;
+  color: #333;
 }
 
 nav span.active {
@@ -42,24 +50,25 @@ nav span.active {
    Intro box (riquadro colorato)
 --------------------------- */
 .intro-box {
-  background-color: #0077cc;  /* colore blu intenso */
+  background-color: #0077cc;
   color: #fff;
   padding: 40px 30px;
-  margin: 30px auto;
   border-radius: 15px;
-  max-width: 1200px;
+  max-width: 1000px;
+  margin: 30px auto; /* centra il box */
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center; /* centra testo */
 }
 
 .intro-box h1 {
-  margin: 0 0 10px;
+  margin-bottom: 10px;
   font-size: 2.5rem;
 }
 
 .intro-box h2 {
-  margin: 0 0 20px;
-  font-size: 1.5rem;
+  margin-bottom: 20px;
   font-weight: normal;
+  font-size: 1.5rem;
 }
 
 .intro-box p {
@@ -80,7 +89,7 @@ nav span.active {
 }
 
 .portfolio-card {
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.95);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -119,7 +128,7 @@ nav span.active {
 }
 
 .about-image img {
-  max-width: 100%;
+  max-width: 80%; /* dimensione media */
   height: auto;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -137,9 +146,9 @@ nav span.active {
 footer {
   text-align: center;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.95); /* leggermente trasparente per vedere lo sfondo */
+  margin-top: auto; /* spinge il footer in basso se poco contenuto */
+  background-color: rgba(255,255,255,0.9);
   color: #555;
-  margin-top: 40px;
   font-size: 0.9rem;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
 }
@@ -163,5 +172,8 @@ footer {
   .portfolio-grid {
     gap: 20px;
   }
-}
 
+  .about-image img {
+    max-width: 95%;
+  }
+}

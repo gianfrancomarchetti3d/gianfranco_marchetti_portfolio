@@ -1,14 +1,86 @@
-/* Portfolio Grid */
+/* ========================
+   Reset e base
+======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica', Arial, sans-serif;
+  background-image: url("images/viaggio.png"); /* sfondo unico per tutte le pagine */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* ========================
+   Nav
+======================== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 0;
+  background-color: rgba(0,0,0,0.6);
+}
+
+nav a, nav span.active {
+  color: #00ff00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav span.active {
+  text-decoration: underline;
+}
+
+/* ========================
+   Riquadro introduttivo (.intro-box)
+======================== */
+.intro-box {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  border: 3px solid #00ff00;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ========================
+   Hero Image (solo Home)
+======================== */
+.hero-image img {
+  max-width: 80%;
+  height: auto;
+  margin: 30px auto;
+  display: block;
+  border-radius: 15px;
+}
+
+/* ========================
+   Portfolio Grid
+======================== */
+.portfolio-section {
+  padding: 30px 15px;
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
   max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 15px;
+  margin: 0 auto;
 }
 
-/* Card progetto */
 .portfolio-card {
   display: flex;
   justify-content: center;
@@ -18,7 +90,7 @@
   background-color: rgba(0, 128, 0, 0.7); /* riquadro verde */
   border-radius: 12px;
   padding: 15px;
-  max-width: 220px; /* limita la larghezza */
+  max-width: 220px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   transition: transform 0.3s ease;
@@ -47,9 +119,43 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* Responsive */
+/* ========================
+   About Section
+======================== */
+.about-section img {
+  max-width: 70%;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  border-radius: 15px;
+}
+
+/* ========================
+   Footer
+======================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  background-color: rgba(0,0,0,0.6);
+  color: #00ff00;
+  font-size: 0.9rem;
+}
+
+/* ========================
+   Responsive
+======================== */
 @media(max-width:768px){
+  .intro-box {
+    max-width: 90%;
+    padding: 25px 20px;
+  }
+
   .portfolio-box {
+    max-width: 90%;
+  }
+
+  .hero-image img, .about-section img {
     max-width: 90%;
   }
 }

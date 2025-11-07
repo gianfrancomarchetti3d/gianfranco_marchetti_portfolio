@@ -20,67 +20,127 @@
   <h1>Gianfranco Marchetti</h1>
   <h2>Professional 3D Artist | Calcinate (BG), Italy</h2>
   <p>This portfolio showcases a curated selection of my 3D works, including product visualization, architectural rendering, cinematic compositions, and photorealistic integrations with real-world photography.</p>
-  <p>Each project demonstrates attention to detail, realistic material rendering using PBR workflows, and mastery of lighting to create immersive visuals.</p>
 </section>
 
 <!-- Portfolio Grid -->
 <section class="portfolio-section">
   <div class="portfolio-grid">
 
+    <!-- 6 Immagini esistenti -->
     <div class="portfolio-card">
       <div class="portfolio-box">
-        <img src="images/render01.png" alt="La Grotta">
+        <img src="images/render01.png" alt="La Grotta" class="lightbox-trigger">
         <h3>La Grotta</h3>
         <p>Realistic lighting with PBR materials</p>
       </div>
     </div>
-
     <div class="portfolio-card">
       <div class="portfolio-box">
-        <img src="images/render02.png" alt="Modern Office">
+        <img src="images/render02.png" alt="Modern Office" class="lightbox-trigger">
         <h3>Modern Office</h3>
         <p>Interior design of a modern office</p>
       </div>
     </div>
-
     <div class="portfolio-card">
       <div class="portfolio-box">
-        <img src="images/render03.png" alt="Romulan Spaceship">
+        <img src="images/render03.png" alt="Romulan Spaceship" class="lightbox-trigger">
         <h3>Romulan Spaceship</h3>
         <p>Spaceship in space, cinematic rendering with detailed materials</p>
       </div>
     </div>
-
     <div class="portfolio-card">
       <div class="portfolio-box">
-        <img src="images/render04.png" alt="Photorealistic Integration">
+        <img src="images/render04.png" alt="Photorealistic Integration" class="lightbox-trigger">
         <h3>Photorealistic Integration</h3>
         <p>Real photo with 3D elements: pool and outdoor furniture</p>
       </div>
     </div>
-
     <div class="portfolio-card">
       <div class="portfolio-box">
-        <img src="images/sfera_pbr_decal.png" alt="PBR Sphere with decals">
+        <img src="images/sfera_pbr_decal.png" alt="PBR Sphere with decals" class="lightbox-trigger">
         <h3>PBR Sphere with Decals</h3>
         <p>Study of PBR materials with applied decals, lights and reflections</p>
       </div>
     </div>
-
     <div class="portfolio-card">
       <div class="portfolio-box">
-        <img src="images/bmw_compositing.png" alt="BMW Compositing">
+        <img src="images/bmw_compositing.png" alt="BMW Compositing" class="lightbox-trigger">
         <h3>BMW Compositing</h3>
         <p>3D BMW model integrated into photographic scene</p>
+      </div>
+    </div>
+
+    <!-- 4 Nuove Griglie Video -->
+    <div class="portfolio-card">
+      <div class="portfolio-box">
+        <video src="videos/video1.mp4" controls></video>
+        <h3>Video 1</h3>
+        <p>Animation preview</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-box">
+        <video src="videos/video2.mp4" controls></video>
+        <h3>Video 2</h3>
+        <p>Animation preview</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-box">
+        <video src="videos/video3.mp4" controls></video>
+        <h3>Video 3</h3>
+        <p>Animation preview</p>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <div class="portfolio-box">
+        <video src="videos/video4.mp4" controls></video>
+        <h3>Video 4</h3>
+        <p>Animation preview</p>
       </div>
     </div>
 
   </div>
 </section>
 
+<!-- Lightbox Overlay -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" src="" alt="">
+</div>
+
 <footer>
   © 2025 Gianfranco Marchetti – All rights reserved
 </footer>
+
+<script>
+// Lightbox immagini
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-content');
+const triggers = document.querySelectorAll('.lightbox-trigger');
+const closeBtn = document.querySelector('.close');
+
+triggers.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+    // chiusura automatica dopo 5 secondi
+    setTimeout(() => {
+      lightbox.style.display = 'none';
+    }, 5000);
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox) {
+    lightbox.style.display = 'none';
+  }
+});
+</script>
 
 </body>
 </html>

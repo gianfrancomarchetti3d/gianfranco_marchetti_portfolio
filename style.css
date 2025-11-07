@@ -201,7 +201,7 @@ nav span.active {
 }
 
 .contact-image img {
-  width: 150px;
+  width: 200px;   /* ingrandita rispetto a prima */
   height: auto;
   border-radius: 15px;
   object-fit: contain; /* evita taglio */
@@ -263,7 +263,7 @@ footer {
 
   /* Contatti immagine sotto */
   .contact-image img {
-    width: 120px;
+    width: 150px;
     height: auto;
   }
 }

@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Helvetica', Arial, sans-serif;
-  background-image: url("images/viaggio.png"); /* sfondo unico per tutte le pagine */
+  background-image: url("images/viaggio.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -124,7 +124,7 @@ nav span.active {
    About Section
 ======================== */
 .about-section img {
-  max-width: 20%; /* desktop */
+  max-width: 20%;
   height: auto;
   margin: 20px auto;
   display: block;
@@ -201,10 +201,10 @@ nav span.active {
 }
 
 .contact-image img {
-  width: 300px;  /* ingrandita a 300px */
-  height: auto;  /* mantiene proporzioni */
+  width: 800px; /* desktop */
+  height: auto;
   border-radius: 15px;
-  object-fit: contain; /* non taglia l'immagine */
+  object-fit: contain;
   border: 3px solid #00ff00;
 }
 
@@ -226,7 +226,7 @@ footer {
 @media(max-width:768px){
   /* About Section */
   .about-section img {
-    max-width: 80%; /* mobile */
+    max-width: 80%;
     height: auto;
   }
 
@@ -261,7 +261,7 @@ footer {
   }
 
   .contact-image img {
-    width: 150px; /* mobile ridotta */
+    width: 300px; /* mobile */
     height: auto;
   }
 }

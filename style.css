@@ -43,7 +43,7 @@ nav span.active {
 }
 
 /* ========================
-   Riquadro introduttivo (.intro-box)
+   Intro Box
 ======================== */
 .intro-box {
   max-width: 1000px;
@@ -51,19 +51,8 @@ nav span.active {
   padding: 40px 30px;
   border: 3px solid #00ff00;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0,0,0,0.6);
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* ========================
-   Hero Image (solo Home)
-======================== */
-.hero-image img {
-  max-width: 70%;
-  height: auto;
-  margin: 30px auto;
-  display: block;
-  border-radius: 15px;
 }
 
 /* ========================
@@ -89,11 +78,16 @@ nav span.active {
 .portfolio-box {
   background-color: rgba(0, 128, 0, 0.5);
   border-radius: 12px;
-  padding: 30px;
+  padding: 20px;
   max-width: 400px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+
+.portfolio-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .portfolio-box img,
@@ -115,11 +109,6 @@ nav span.active {
   color: #fff;
 }
 
-.portfolio-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
 /* ========================
    About Section
 ======================== */
@@ -132,7 +121,7 @@ nav span.active {
 }
 
 /* ========================
-   Contatti - Testo, Immagine e Social
+   Contatti
 ======================== */
 .contact-info {
   display: flex;
@@ -172,7 +161,7 @@ nav span.active {
   justify-content: center;
   width: 80px;
   height: 80px;
-  background-color: rgba(0, 128, 0, 0.5);
+  background-color: rgba(0,128,0,0.5);
   border-radius: 15px;
   transition: transform 0.3s, background-color 0.3s;
 }
@@ -191,9 +180,6 @@ nav span.active {
   color: #000;
 }
 
-/* ========================
-   Immagine contatti sotto le icone
-======================== */
 .contact-image {
   display: block;
   text-align: center;
@@ -201,10 +187,10 @@ nav span.active {
 }
 
 .contact-image img {
-  width: 800px; /* desktop */
+  width: 800px;
   height: auto;
-  border-radius: 15px;
   object-fit: contain;
+  border-radius: 15px;
   border: 3px solid #00ff00;
 }
 
@@ -224,50 +210,50 @@ footer {
    Responsive generale
 ======================== */
 @media(max-width:768px){
-  /* About Section */
-  .about-section img {
-    max-width: 80%;
-    height: auto;
-  }
-
-  /* Intro Box */
-  .intro-box {
-    max-width: 40%;
-    padding: 25px 20px;
-  }
-
-  /* Portfolio Box */
-  .portfolio-box {
-    max-width: 40%;
-  }
-
-  /* Hero Image */
-  .hero-image img {
-    max-width: 40%;
-  }
-
-  /* Contatti */
-  .contact-info p {
-    font-size: 1.2rem;
-  }
-
-  .social-icons a {
-    width: 60px;
-    height: 60px;
-  }
-
-  .social-icons a i {
-    font-size: 2rem;
-  }
-
-  .contact-image img {
-    width: 300px; /* mobile */
-    height: auto;
-  }
+  .about-section img { max-width: 80%; height: auto; }
+  .intro-box { max-width: 40%; padding: 25px 20px; }
+  .portfolio-box { max-width: 40%; }
+  .hero-image img { max-width: 40%; }
+  .contact-info p { font-size: 1.2rem; }
+  .social-icons a { width: 60px; height: 60px; }
+  .social-icons a i { font-size: 2rem; }
+  .contact-image img { width: 150px; height: auto; }
 }
 
 /* ========================
-   Video MP4 nel Portfolio
+   Lightbox Overlay
+======================== */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ========================
+   Video MP4 Portfolio
 ======================== */
 .portfolio-box video {
   display: block;

@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Helvetica', Arial, sans-serif;
-  background-image: url("images/viaggio.png");
+  background-image: url("images/viaggio.png"); /* sfondo unico per tutte le pagine */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@ nav span.active {
 }
 
 /* ========================
-   Intro Box
+   Riquadro introduttivo (.intro-box)
 ======================== */
 .intro-box {
   max-width: 1000px;
@@ -56,7 +56,7 @@ nav span.active {
 }
 
 /* ========================
-   Hero Image
+   Hero Image (solo Home)
 ======================== */
 .hero-image img {
   max-width: 70%;
@@ -124,7 +124,7 @@ nav span.active {
    About Section
 ======================== */
 .about-section img {
-  max-width: 20%;
+  max-width: 20%; /* desktop */
   height: auto;
   margin: 20px auto;
   display: block;
@@ -132,7 +132,7 @@ nav span.active {
 }
 
 /* ========================
-   Contatti
+   Contatti - Testo, Immagine e Social
 ======================== */
 .contact-info {
   display: flex;
@@ -201,10 +201,10 @@ nav span.active {
 }
 
 .contact-image img {
-  width: 200px;   /* ingrandita rispetto a prima */
-  height: auto;
+  width: 300px;  /* ingrandita a 300px */
+  height: auto;  /* mantiene proporzioni */
   border-radius: 15px;
-  object-fit: contain; /* evita taglio */
+  object-fit: contain; /* non taglia l'immagine */
   border: 3px solid #00ff00;
 }
 
@@ -224,9 +224,9 @@ footer {
    Responsive generale
 ======================== */
 @media(max-width:768px){
-  /* About */
+  /* About Section */
   .about-section img {
-    max-width: 80%;
+    max-width: 80%; /* mobile */
     height: auto;
   }
 
@@ -246,12 +246,11 @@ footer {
     max-width: 40%;
   }
 
-  /* Contatti testo */
+  /* Contatti */
   .contact-info p {
     font-size: 1.2rem;
   }
 
-  /* Contatti social */
   .social-icons a {
     width: 60px;
     height: 60px;
@@ -261,9 +260,20 @@ footer {
     font-size: 2rem;
   }
 
-  /* Contatti immagine sotto */
   .contact-image img {
-    width: 150px;
+    width: 150px; /* mobile ridotta */
     height: auto;
   }
 }
+
+/* ========================
+   Video MP4 nel Portfolio
+======================== */
+.portfolio-box video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+

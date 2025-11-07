@@ -26,7 +26,7 @@
 <section class="portfolio-section">
   <div class="portfolio-grid">
 
-    <!-- 6 Immagini esistenti -->
+    <!-- 6 immagini portfolio -->
     <div class="portfolio-card">
       <div class="portfolio-box">
         <img src="images/render01.png" alt="La Grotta" class="lightbox-trigger">
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <!-- 4 Nuove Griglie Video -->
+    <!-- 4 video portfolio -->
     <div class="portfolio-card">
       <div class="portfolio-box">
         <video src="videos/video1.mp4" controls></video>
@@ -104,8 +104,8 @@
 </section>
 
 <!-- Lightbox Overlay -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
+<div id="lightbox" class="lightbox-overlay">
+  <span class="lightbox-close">&times;</span>
   <img class="lightbox-content" src="" alt="">
 </div>
 
@@ -118,30 +118,29 @@
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.querySelector('.lightbox-content');
 const triggers = document.querySelectorAll('.lightbox-trigger');
-const closeBtn = document.querySelector('.close');
+const closeBtn = document.querySelector('.lightbox-close');
 
 triggers.forEach(img => {
   img.addEventListener('click', () => {
-    lightbox.style.display = 'flex';
+    lightbox.classList.add('active');
     lightboxImg.src = img.src;
-    // chiusura automatica dopo 5 secondi
+    // chiusura automatica dopo 3 secondi
     setTimeout(() => {
-      lightbox.style.display = 'none';
-    }, 5000);
+      lightbox.classList.remove('active');
+    }, 3000);
   });
 });
 
 closeBtn.addEventListener('click', () => {
-  lightbox.style.display = 'none';
+  lightbox.classList.remove('active');
 });
 
 lightbox.addEventListener('click', (e) => {
   if(e.target === lightbox) {
-    lightbox.style.display = 'none';
+    lightbox.classList.remove('active');
   }
 });
 </script>
 
 </body>
 </html>
-

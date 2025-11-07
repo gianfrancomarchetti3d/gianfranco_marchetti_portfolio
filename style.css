@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Helvetica', Arial, sans-serif;
-  background-image: url("images/viaggio.png");
+  background-image: url("images/viaggio.png"); /* sfondo unico per tutte le pagine */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,86 +43,87 @@ nav span.active {
 }
 
 /* ========================
-   Contatti
+   Riquadro introduttivo (.intro-box)
 ======================== */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.contact-info p {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #000;
-}
-
-.contact-info a {
-  color: #000;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  color: #00ff00;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 15px;
-}
-
-.social-icons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  background-color: rgba(0,128,0,0.5);
+.intro-box {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  border: 3px solid #00ff00;
   border-radius: 15px;
-  transition: transform 0.3s, background-color 0.3s;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.social-icons a i {
-  font-size: 3rem;
+/* ========================
+   Hero Image (solo Home)
+======================== */
+.hero-image img {
+  max-width: 70%;
+  height: auto;
+  margin: 30px auto;
+  display: block;
+  border-radius: 15px;
+}
+
+/* ========================
+   Portfolio Grid
+======================== */
+.portfolio-section {
+  padding: 30px 15px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-box {
+  background-color: rgba(0, 128, 0, 0.5);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.portfolio-box h3 {
+  font-size: 1.2rem;
+  margin: 5px 0;
   color: #fff;
 }
 
-.social-icons a:hover {
-  transform: scale(1.2);
-  background-color: #00ff00;
+.portfolio-box p {
+  font-size: 1rem;
+  color: #fff;
 }
 
-.social-icons a:hover i {
-  color: #000;
-}
-
-/* ========================
-   Immagine sotto le icone
-======================== */
-.contact-image {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-}
-
-.contact-image img {
-  display: block;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  object-fit: cover;
-  border: 3px solid #00ff00;
+.portfolio-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* ========================
-   About Image media
+   About Section
 ======================== */
 .about-section img {
-  max-width: 50%; /* dimensione media */
+  max-width: 40%;
   height: auto;
   margin: 20px auto;
   display: block;
@@ -142,7 +143,106 @@ footer {
 }
 
 /* ========================
-   Responsive
+   Responsive generale
+======================== */
+@media(max-width:768px){
+  .intro-box {
+    max-width: 90%;
+    padding: 25px 20px;
+  }
+
+  .portfolio-box {
+    max-width: 90%;
+  }
+
+  .hero-image img, .about-section img {
+    max-width: 60%;
+  }
+}
+
+/* ========================
+   Contatti - Testo, Immagine e Social
+======================== */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.contact-info p {
+  font-size: 1.6rem;  /* più grande */
+  font-weight: bold;   /* grassetto */
+  color: #000000;      /* nero */
+  margin: 5px 0;
+}
+
+.contact-info a {
+  color: #000000;      /* link nero */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: #00ff00;      /* hover verde */
+}
+
+/* ========================
+   Social Icons - grandi
+======================== */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 128, 0, 0.5);
+  border-radius: 15px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icons a i {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  background-color: #00ff00;
+}
+
+.social-icons a:hover i {
+  color: #000;
+}
+
+/* ========================
+   Immagine contatti sotto le icone
+======================== */
+.contact-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.contact-image img {
+  display: block;        /* assicura che sia visibile */
+  width: 150px;          /* dimensione desktop */
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  border: 3px solid #00ff00;
+}
+
+/* ========================
+   Responsive Contatti
 ======================== */
 @media(max-width:768px){
   .contact-info p {
@@ -161,9 +261,5 @@ footer {
   .contact-image img {
     width: 120px;
     height: 120px;
-  }
-
-  .about-section img {
-    max-width: 80%;
   }
 }

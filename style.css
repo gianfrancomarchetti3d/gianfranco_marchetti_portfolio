@@ -190,6 +190,9 @@ nav span.active {
   color: #000;
 }
 
+/* ========================
+   Immagine contatti sotto le icone
+======================== */
 .contact-image {
   display: block;
   text-align: center;
@@ -198,10 +201,10 @@ nav span.active {
 
 .contact-image img {
   width: 150px;
-  height: 150px;
+  height: auto; /* altezza automatica per mantenere proporzioni */
   border-radius: 15px;
-  object-fit: cover;
   border: 3px solid #00ff00;
+  object-fit: none; /* evita il taglio */
 }
 
 /* ========================
@@ -246,6 +249,7 @@ nav span.active {
 
   .contact-image img {
     width: 120px;
-    height: 120px;
+    height: auto; /* mantiene proporzioni su mobile */
   }
 }
+

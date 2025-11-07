@@ -97,13 +97,25 @@ nav span.active {
   transition: transform 0.3s ease;
 }
 
-.portfolio-box img,
+.portfolio-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer; /* indica cliccabile per lightbox */
+}
+
 .portfolio-box video {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
   margin-bottom: 12px;
-  cursor: pointer;
+  transition: transform 0.3s ease; 
+}
+
+.portfolio-box video:hover {
+  transform: scale(1.2); /* ingrandisce al passaggio del mouse */
+  z-index: 10;
 }
 
 .portfolio-box h3 {
@@ -126,12 +138,14 @@ nav span.active {
    About Section
 ======================== */
 .about-section img {
-  max-width: 20%;
+  max-width: 600px; /* dimensione media */
+  width: 80%;       /* mobile-friendly */
   height: auto;
   margin: 20px auto;
   display: block;
   border-radius: 15px;
-  border: 3px solid #00ff00; /* contorno verde corretto */
+  border: 3px solid #00ff00; /* contorno verde */
+  cursor: default;  /* non cliccabile */
 }
 
 /* ========================
@@ -201,7 +215,7 @@ nav span.active {
 }
 
 .contact-image img {
-  width: 800px;
+  width: 800px; 
   height: auto;
   border-radius: 15px;
   object-fit: contain;
@@ -224,29 +238,23 @@ footer {
    Responsive generale
 ======================== */
 @media(max-width:768px){
-  /* About Section */
   .about-section img {
     max-width: 80%;
-    height: auto;
   }
 
-  /* Intro Box */
   .intro-box {
     max-width: 40%;
     padding: 25px 20px;
   }
 
-  /* Portfolio Box */
   .portfolio-box {
     max-width: 40%;
   }
 
-  /* Hero Image */
   .hero-image img {
     max-width: 40%;
   }
 
-  /* Contatti */
   .contact-info p {
     font-size: 1.2rem;
   }
@@ -267,7 +275,7 @@ footer {
 }
 
 /* ========================
-   Lightbox immagini
+   Lightbox
 ======================== */
 .lightbox-overlay {
   position: fixed;
@@ -296,8 +304,7 @@ footer {
   position: relative;
 }
 
-.lightbox-content img,
-.lightbox-content video {
+.lightbox-content img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 10px;

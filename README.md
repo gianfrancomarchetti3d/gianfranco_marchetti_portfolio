@@ -1,31 +1,31 @@
-Portfolio di Gianfranco Marchetti
+Gianfranco Marchetti Portfolio
 
-Benvenuti nel mio portfolio online, dove presento una selezione dei miei lavori 3D e Motion Design. Questo sito è realizzato con HTML5, CSS3 e contiene contenuti multimediali interattivi per valorizzare al meglio le mie creazioni.
+Welcome to my online portfolio, where I showcase a selection of my 3D and Motion Design work. This site is built with HTML5 and CSS3 and features interactive multimedia to highlight my creations.
 
-Contenuti
+Contents
 
-Home (index.html) – Presentazione e introduzione
+Home (index.html) – Introduction and overview
 
-About (about.html) – Chi sono e cosa faccio
+About (about.html) – About me and my work
 
-Portfolio (portfolio.html) – Lavori 3D, rendering e Motion Design
+Portfolio (portfolio.html) – 3D projects, renderings, and Motion Design
 
-Contact (contact.html) – Contatti e social
+Contact (contact.html) – Contact info and social links
 
-style.css – Stili e layout del sito
+style.css – Site styles and layout
 
-images/ – Immagini e video dei progetti
+images/ – Folder containing images and videos of my projects
 
-Tecnologie e competenze
+Skills & Technologies
 
-Modellazione e rendering 3D fotorealistico con Blender
+3D modeling and photorealistic rendering using Blender
 
-Animazioni e Motion Graphics
+Animation and Motion Graphics
 
-Integrazione di video e immagini interattive
+Integration of interactive videos and images
 
-Layout responsive e design ottimizzato per desktop e mobile
+Responsive design optimized for desktop and mobile
 
-Link al sito
+Website
 
-Visita il mio portfolio online su GitHub Pages
+Check out my online portfolio on GitHub Pages

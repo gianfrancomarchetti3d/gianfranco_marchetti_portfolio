@@ -53,13 +53,14 @@ nav span.active {
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  word-wrap: break-word;
 }
 
 /* ========================
-   Hero Image (solo Home)
+   Hero Image (Home)
 ======================== */
 .hero-image img {
-  max-width: 70%;
+  max-width: 600px; /* stessa dimensione About */
   height: auto;
   margin: 30px auto;
   display: block;
@@ -97,18 +98,16 @@ nav span.active {
   transition: transform 0.3s ease;
 }
 
-/* Immagini e video portfolio */
 .portfolio-box img,
 .portfolio-box video {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
   margin-bottom: 12px;
-  cursor: pointer; /* immagini cliccabili */
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-/* Video hover ingrandimento */
 .portfolio-box video:hover {
   transform: scale(1.2);
   z-index: 10;
@@ -133,8 +132,9 @@ nav span.active {
 /* ========================
    About Section
 ======================== */
-.about-section img {
-  max-width: 600px;
+.about-section img,
+.about-image img {
+  max-width: 600px; /* ridotta come richiesto */
   height: auto;
   margin: 20px auto;
   display: block;
@@ -143,7 +143,7 @@ nav span.active {
 }
 
 /* ========================
-   Contatti - Testo, Immagine e Social
+   Contatti
 ======================== */
 .contact-info {
   display: flex;
@@ -232,14 +232,27 @@ footer {
    Responsive generale
 ======================== */
 @media(max-width:768px){
-  .about-section img {
+  .about-section img,
+  .about-image img {
     max-width: 80%;
     height: auto;
   }
 
   .intro-box {
-    max-width: 40%;
-    padding: 25px 20px;
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .intro-box h1 {
+    font-size: 1.5rem;
+  }
+
+  .intro-box h2 {
+    font-size: 1.1rem;
+  }
+
+  .intro-box p {
+    font-size: 0.95rem;
   }
 
   .portfolio-box {
@@ -247,7 +260,8 @@ footer {
   }
 
   .hero-image img {
-    max-width: 40%;
+    max-width: 80%;
+    height: auto;
   }
 
   .contact-info p {
@@ -270,7 +284,7 @@ footer {
 }
 
 /* ========================
-   Lightbox
+   Lightbox per immagini
 ======================== */
 .lightbox-overlay {
   position: fixed;
@@ -308,6 +322,7 @@ footer {
   cursor: pointer;
   font-weight: bold;
 }
+
 
 
 

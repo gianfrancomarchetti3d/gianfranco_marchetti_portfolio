@@ -147,16 +147,16 @@ footer {
 ======================== */
 @media(max-width:768px){
   .intro-box {
-    max-width: 90%;
+    max-width: 40%;
     padding: 25px 20px;
   }
 
   .portfolio-box {
-    max-width: 90%;
+    max-width: 40%;
   }
 
   .hero-image img, .about-section img {
-    max-width: 60%;
+    max-width: 40%;
   }
 }
 
@@ -227,14 +227,13 @@ footer {
    Immagine contatti sotto le icone
 ======================== */
 .contact-image {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
 }
 
 .contact-image img {
-  display: block;        /* assicura che sia visibile */
-  width: 150px;          /* dimensione desktop */
+  width: 150px;  /* desktop */
   height: 150px;
   border-radius: 15px;
   object-fit: cover;

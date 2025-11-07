@@ -123,41 +123,11 @@ nav span.active {
    About Section
 ======================== */
 .about-section img {
-  max-width: 40%;
+  max-width: 20%; /* desktop */
   height: auto;
   margin: 20px auto;
   display: block;
   border-radius: 15px;
-}
-
-/* ========================
-   Footer
-======================== */
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: auto;
-  background-color: rgba(0,0,0,0.6);
-  color: #00ff00;
-  font-size: 0.9rem;
-}
-
-/* ========================
-   Responsive generale
-======================== */
-@media(max-width:768px){
-  .intro-box {
-    max-width: 40%;
-    padding: 25px 20px;
-  }
-
-  .portfolio-box {
-    max-width: 40%;
-  }
-
-  .hero-image img, .about-section img {
-    max-width: 40%;
-  }
 }
 
 /* ========================
@@ -172,25 +142,22 @@ footer {
 }
 
 .contact-info p {
-  font-size: 1.6rem;  /* più grande */
-  font-weight: bold;   /* grassetto */
-  color: #000000;      /* nero */
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #000;
   margin: 5px 0;
 }
 
 .contact-info a {
-  color: #000000;      /* link nero */
+  color: #000;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .contact-info a:hover {
-  color: #00ff00;      /* hover verde */
+  color: #00ff00;
 }
 
-/* ========================
-   Social Icons - grandi
-======================== */
 .social-icons {
   display: flex;
   justify-content: center;
@@ -223,17 +190,14 @@ footer {
   color: #000;
 }
 
-/* ========================
-   Immagine contatti sotto le icone
-======================== */
 .contact-image {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
+  margin: 20px auto 0 auto;
 }
 
 .contact-image img {
-  width: 150px;  /* desktop */
+  width: 150px;
   height: 150px;
   border-radius: 15px;
   object-fit: cover;
@@ -241,9 +205,32 @@ footer {
 }
 
 /* ========================
-   Responsive Contatti
+   Responsive generale
 ======================== */
 @media(max-width:768px){
+  /* About Section */
+  .about-section img {
+    max-width: 80%; /* mobile */
+    height: auto;
+  }
+
+  /* Intro Box */
+  .intro-box {
+    max-width: 40%;
+    padding: 25px 20px;
+  }
+
+  /* Portfolio Box */
+  .portfolio-box {
+    max-width: 40%;
+  }
+
+  /* Hero Image */
+  .hero-image img {
+    max-width: 40%;
+  }
+
+  /* Contatti */
   .contact-info p {
     font-size: 1.2rem;
   }
